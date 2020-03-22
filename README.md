@@ -7,9 +7,9 @@ Group Members:
 |Matthew Abraham|815009613
 |Ajay Sieunarine|816000325|
 |Asa Yee|815009011|
-
-## Wordpress Site: JJ's Anime Reviews
 ---
+## Wordpress Site: JJ's Anime Reviews
+
 ### Domain
    Anime Listings, and Anime Reviews.\
 
