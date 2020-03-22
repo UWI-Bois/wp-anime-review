@@ -2,9 +2,11 @@
 >This website is a group project for complete assessment requirements for the INFO 3602 course in UWI.
 
 Group Members:
->Matthew Abraham 815009613
->Asa Yee 815009011
->Ajay Sieunarine 816000325
+|Name|ID|
+|---|---|
+|Matthew Abraham|815009613
+|Ajay Sieunarine|816000325|
+|Asa Yee|815009011|
 
 ## Wordpress Site: JJ's Anime Reviews
 ---
