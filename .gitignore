@@ -1,14 +1,14 @@
 # ignore everything in the root except the "wp-content" directory.
 
-# !wp-content/
+!wp-content/
 
 # ignore everything in the "wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 
-# wp-content/*
-# !wp-content/mu-plugins/
-# !wp-content/plugins/
-# !wp-content/themes/
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
 
 
 
@@ -35,3 +35,62 @@ node_modules/
 
 wp-admin
 wp-includes
+
+.htaccess
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+test/
+
+# wordpress specific
+wp-config.php
+wp-content/uploads/
+wp-content/blogs.dir/
+wp-content/upgrade/*
+wp-content/backup-db/*
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/*
+wp-content/cache/supercache/*
+
+# theme specific
+wp-content/themes/**/node_modules
+wp-content/themes/**/.sass-cache
+
+# wp core (as of 3.4.1)
+/db-config.php
+/index.php
+/license.txt
+/readme.html
+/wp-activate.php
+/wp-app.php
+/wp-atom.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-commentsrss2.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-feed.php
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-rdf.php
+/wp-rss.php
+/wp-rss2.php
+/wp-pass.php
+/wp-register.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+/wp-admin
+/wp-includes
+/wp-content/index.php
+/wp-content/themes/twentyten
+/wp-content/themes/index.php
+/wp-content/plugins/index.php
