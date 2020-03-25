@@ -19,6 +19,8 @@ wp-content/plugins/hello.php
 wp-content/themes/twenty*/
 wp-content/themes/twentynineteen/
 wp-content/themes/twentyseventeen/
+wp-content/themes/twentysixteen/
+wp-content/themes/twentytwenty/
 
 # ignore node dependency directories
 node_modules/
