@@ -16,7 +16,7 @@ wp-content/*
 wp-content/plugins/hello.php
 
 # ignore specific themes
-app/public/wp-content/themes/
+app/public/wp-content/themes/*
 # wp-content/themes/twentynineteen/
 # wp-content/themes/twentyseventeen/
 # wp-content/themes/twentysixteen/
