@@ -1,3 +1,4 @@
+hello good day
 <?php
 /**
  * The main template file
