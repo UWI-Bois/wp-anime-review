@@ -5,4 +5,6 @@
 !/Project-INFO3602.pdf
 !/README.md
 
+# ignore all themes except for default
 /wp-content/themes/twenty*
+!/wp-content/themes/twentytwenty
