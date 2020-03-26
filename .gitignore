@@ -2,6 +2,8 @@
 /*
 !.gitignore
 !/wp-content/
+!/Project-INFO3602.pdf
+!/README.md
 
 # ignore everything in the "wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
