@@ -5,14 +5,4 @@
 !/Project-INFO3602.pdf
 !/README.md
 
-# ignore everything in the "wp-content" directory, except:
-# "mu-plugins", "plugins", "themes" directory
-!/wp-content/mu-plugins/
-!/wp-content/plugins/
-!/wp-content/themes/
-
-# ignore these plugins
-/wp-content/plugins/hello.php
-
-# ignore log files and databases
-*.log
+/wp-content/themes/twenty*
