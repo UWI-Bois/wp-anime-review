@@ -1,9 +1,10 @@
 # ignore everything in the root except the important directories.
 /*
 !.gitignore
-!/wp-content/
-!/Project-INFO3602.pdf
-!/README.md
+!public/wp-content/
+!sql/
+!Project-INFO3602.pdf
+!README.md
 
 # miscellaneous ignores
 snippets.php
