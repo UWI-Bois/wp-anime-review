@@ -6,8 +6,13 @@
 # directory exceptions
 !public/wp-content/
 !sql/
+# !public/wp-content/themes/newsup/
 
 # miscellaneous ignores
 !Project-INFO3602.pdf
 !README.md
 snippets.php
+
+# ignore default themes
+# public/wp-content/themes/twenty*/
+
