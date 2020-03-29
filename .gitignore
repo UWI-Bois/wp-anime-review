@@ -6,7 +6,7 @@
 # directory exceptions
 !public/wp-content/
 !sql/
-# !public/wp-content/themes/newsup/
+!public/wp-content/themes/newsup/
 
 # miscellaneous ignores
 !Project-INFO3602.pdf
