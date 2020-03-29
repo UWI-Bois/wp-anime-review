@@ -4,6 +4,7 @@
 !/wp-content/
 !/Project-INFO3602.pdf
 !/README.md
+!/exported.xml
 
 # miscellaneous ignores
 snippets.php
