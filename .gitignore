@@ -14,5 +14,5 @@
 snippets.php
 
 # ignore default themes
-public/wp-content/themes/twenty*/
+# public/wp-content/themes/twenty*/
 
