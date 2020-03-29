@@ -1,10 +1,12 @@
 # ignore everything in the public root except the important directories.
 /public/*
+/public/wp-content/themes/*
 
 !.gitignore
 
 # directory exceptions
 !public/wp-content/
+!public/wp-content/themes/newsup*
 !sql/
 
 # miscellaneous ignores
