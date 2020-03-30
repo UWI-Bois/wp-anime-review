@@ -243,24 +243,3 @@ function newsup_add_home_link($items, $args){
     }
     return $items;
 }
-
-//=========== CUSTOM CODE FOR GROUP PROJECT =================
-
-/**
- * Remove default wordpress roles
- * Reference: https://www.role-editor.com/remove-wordpress-built-in-user-roles/
- */
-
-// DO NOT USE, VERY BROKEN
-// add_action('admin_menu', 'remove_built_in_roles');
-// function remove_built_in_roles() {
-//     global $wp_roles;
- 
-//     $roles_to_remove = array('subscriber', 'contributor', 'author', 'editor');
- 
-//     foreach ($roles_to_remove as $role) {
-//         if (isset($wp_roles->roles[$role])) {
-//             $wp_roles->remove_role($role);
-//         }
-//     }
-// }
