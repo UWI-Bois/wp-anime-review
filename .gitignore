@@ -1,6 +1,15 @@
-# ignore everything in the root except the important directories.
-/*
+# ignore everything in the public root except the important directories.
+/public/*
+/public/wp-content/themes/*
+
 !.gitignore
-!/wp-content/
-!/Project-INFO3602.pdf
-!/README.md
+
+# directory exceptions
+!public/wp-content/
+!public/wp-content/themes/newsup*
+!sql/
+
+# miscellaneous ignores
+!Project-INFO3602.pdf
+!README.md
+snippets.php
