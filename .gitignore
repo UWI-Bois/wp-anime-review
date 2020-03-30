@@ -1,14 +1,36 @@
-# ignore everything in the public root except the important directories.
-/public/wp-content/themes/*
-/public/*
+# ignore everything in the root except the "public/wp-content" directory.
+public/
+!public/wp-content
 
-# directory exceptions
-!public/wp-content/themes/newsup*
-!public/wp-content/*
-!sql/
+# don't track files in the "public/wp-content" directory
+public/wp-content/*
+public/wp-content/themes/
 
+# track these directories in "public/wp-content"
+# "mu-plugins", "plugins", directory
+!public/wp-content/mu-plugins/
+!public/wp-content/plugins/
 
-# miscellaneous ignores
-!Project-INFO3602.pdf
-!README.md
-snippets.php
+# track these directories in
+# "wp-content/themes"
+!public/wp-content/themes/newsup/
+!public/wp-content/themes/newsup-child/
+
+# don't track these plugins
+public/wp-content/plugins/hello.php
+
+# don't track these themes
+public/wp-content/themes/twenty*
+
+# don't track node dependency directories
+node_modules/
+
+# don't track log files
+*.log
+
+# track databases files
+!*.sql
+!*.sqlite
+
+# track any files at the root (only)
+/*.*
