@@ -1,28 +1,28 @@
-# ignore everything in the root except the "public/wp-content" directory.
+# track everything in the root except the "public/wp-content" directory.
 !public/wp-content/
 public/*
 
-# ignore everything in the "public/wp-content" directory, except:
+# track everything in the "public/wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 public/wp-content/*
 !public/wp-content/mu-plugins/
 !public/wp-content/plugins/
 !public/wp-content/themes/
 
-# ignore these plugins
+# track these plugins
 public/wp-content/plugins/hello.php
 
-# ignore specific themes
+# track specific themes
 public/wp-content/themes/twenty*/
 
-# ignore node dependency directories
+# track node dependency directories
 node_modules/
 
-# ignore log files and databases
+# do not track log files and databases
 *.log
-*.sql
-*.sqlite
+!*.sql
+!*.sqlite
 
 # track root files
-Project-INFO3603.pdf
-README.md
+!Project-INFO3603.pdf
+!README.md
