@@ -13,7 +13,8 @@ public/wp-content/*
 public/wp-content/plugins/hello.php
 
 # track specific themes
-public/wp-content/themes/twenty*/
+!public/wp-content/themes/newsup*
+public/wp-content/themes/*
 
 # track node dependency directories
 node_modules/
