@@ -19,3 +19,6 @@ node_modules/
 # track root files
 !Project-INFO3603.pdf
 !README.md
+
+# ignore ide folder
+.idea/
