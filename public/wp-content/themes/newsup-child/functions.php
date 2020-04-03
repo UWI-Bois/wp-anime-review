@@ -1,5 +1,15 @@
 <?php
     //=========== CUSTOM CODE FOR GROUP PROJECT =================
+
+    // Enqueue parent theme
+    // Code taken from wordpress.org
+    // Ref: https://developer.wordpress.org/themes/advanced-topics/child-themes/
+    add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+    function my_theme_enqueue_styles() {
+        wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+    }
+
+    // Remove default wordpress roles, and add custom ones
     add_action( 'init', 'set_custom_roles');
     function set_custom_roles(){
         remove_role( 'author' );
