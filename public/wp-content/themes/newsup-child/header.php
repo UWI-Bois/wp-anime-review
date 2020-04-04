@@ -94,54 +94,5 @@
 </div>
 </section>
  <?php }?>
-<?php
-if (is_front_page() || is_home() || true) {
-    $show_flash_news_section = newsup_get_option('show_flash_news_section');
-if ($show_flash_news_section):
-?>
-<section class="mg-latest-news-sec">
-    <?php
-    $category = newsup_get_option('select_flash_news_category');
-    $number_of_posts = newsup_get_option('number_of_flash_news');
-    $newsup_ticker_news_title = newsup_get_option('flash_news_title');
-
-    $all_posts = newsup_get_posts($number_of_posts, $category);
-    $show_trending = true;
-    $count = 1;
-
-    // This code will provide a query on Custom Post Type: Anime
-    // to be used by this module. Modifications were made to use
-    // the custom query instead of the original $all_posts obejct.
-    $anime_posts = new WP_Query(array('post_type' => 'anime', 'orderby' => 'date'));
-    ?>
-    <div class="container-fluid">
-        <div class="mg-latest-news">
-             <div class="bn_title">
-                <h2>
-                    <?php if (!empty($newsup_ticker_news_title)): ?>
-                        <?php echo esc_html($newsup_ticker_news_title); ?><span></span>
-                    <?php endif; ?>
-                </h2>
-            </div>
-            <div class="mg-latest-news-slider marquee">
-                <?php
-                if ($anime_posts->have_posts()) :
-                    while ($anime_posts->have_posts()) : $anime_posts->the_post();
-                        ?>
-                        <a href="<?php the_permalink(); ?>">
-                            <span><?php the_title(); ?></span>
-                         </a>
-                        <?php
-                        $count++;
-                    endwhile;
-                    endif;
-                    wp_reset_postdata();
-                    ?>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Excluive line END -->
-<?php endif;
-}
- ?>
+ <?php do_action('newsup_action_banner_exclusive_posts');
+ do_action('newsup_action_front_page_main_section_1'); ?>
