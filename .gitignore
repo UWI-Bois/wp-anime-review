@@ -13,8 +13,8 @@ node_modules/
 
 # do not track log files and databases
 *.log
-!*.sql
-!*.sqlite
+*.sql
+*.sqlite
 
 # track root files
 !Project-INFO3603.pdf
