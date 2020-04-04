@@ -169,6 +169,7 @@ if(!empty($main_banner_section_background_image)){ ?>
                           $newsup_slider_category = newsup_get_option('select_slider_news_category');
                           $newsup_number_of_slides = newsup_get_option('number_of_slides');
                           $newsup_all_posts_main = newsup_get_posts($newsup_number_of_slides, $newsup_slider_category);
+                          $newsup_all_posts_main = new WP_Query(array('post_type' => 'anime', 'orderby' => 'rand'));
                           $newsup_count = 1;
 
                           if ($newsup_all_posts_main->have_posts()) :
