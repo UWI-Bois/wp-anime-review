@@ -94,5 +94,88 @@
 </div>
 </section>
  <?php }?>
- <?php do_action('newsup_action_banner_exclusive_posts');
- do_action('newsup_action_front_page_main_section_1'); ?>
+ <!-- ==================== FEATURE BANNER ===================== -->
+<?php
+if (is_front_page() || is_home()) {
+    $show_flash_news_section = newsup_get_option('show_flash_news_section');
+if ($show_flash_news_section):
+?>
+<section class="mg-latest-news-sec">
+    <?php
+    $category = newsup_get_option('select_flash_news_category');
+    $number_of_posts = newsup_get_option('number_of_flash_news');
+    $newsup_ticker_news_title = newsup_get_option('flash_news_title');
+
+    $all_posts = newsup_get_posts($number_of_posts, $category);
+    $show_trending = true;
+    $count = 1;
+    ?>
+    <div class="container-fluid">
+        <div class="mg-latest-news">
+             <div class="bn_title">
+                <h2>
+                    <?php if (!empty($newsup_ticker_news_title)): ?>
+                        <?php echo esc_html($newsup_ticker_news_title); ?><span></span>
+                    <?php endif; ?>
+                </h2>
+            </div>
+            <div class="mg-latest-news-slider marquee">
+                <?php
+                if ($all_posts->have_posts()) :
+                    while ($all_posts->have_posts()) : $all_posts->the_post();
+                        ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <span><?php the_title(); ?></span>
+                         </a>
+                        <?php
+                        $count++;
+                    endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Excluive line END -->
+<?php endif;
+}
+ ?>
+ <!-- ======================= END BANNER ====================== -->
+ <!-- =================== FEATURE CAROUSEL ==================== -->
+<?php
+if (is_front_page() || is_home()) {
+$newsup_enable_main_slider = newsup_get_option('show_main_news_section');
+$select_vertical_slider_news_category = newsup_get_option('select_vertical_slider_news_category');
+$vertical_slider_number_of_slides = newsup_get_option('vertical_slider_number_of_slides');
+$all_posts_vertical = newsup_get_posts($vertical_slider_number_of_slides, $select_vertical_slider_news_category);
+if ($newsup_enable_main_slider):
+
+    $main_banner_section_background_image = newsup_get_option('main_banner_section_background_image');
+    $main_banner_section_background_image_url = wp_get_attachment_image_src($main_banner_section_background_image, 'full');
+if(!empty($main_banner_section_background_image)){ ?>
+     <section class="mg-fea-area over" style="background-image:url('<?php echo $main_banner_section_background_image_url[0]; ?>');">
+<?php }else{ ?>
+    <section class="mg-fea-area">
+<?php  } ?>
+    <div class="overlay">
+        <div class="container-fluid">
+            <div class="">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10">
+                        <?php newsup_get_block('list', 'banner'); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php do_action('newsup_action_banner_tabbed_posts');?>
+            </div>
+        </div>
+    </div>
+</section>
+<!--==/ Home Slider ==-->
+<?php endif; ?>
+<!-- end slider-section -->
+<?php }
+ ?>
+ <!-- ==================== END CAROUSEL ===================== -->
