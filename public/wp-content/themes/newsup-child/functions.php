@@ -77,7 +77,7 @@ if (!function_exists('newsup_banner_trending_posts')):
      * @since newsup 1.0.0
      *
      */
-    function newsup_banner_exclusive_posts()  {
+    function jarvis_banner_exclusive_posts()  {
             if (is_front_page() || is_home()) {
                 $show_flash_news_section = newsup_get_option('show_flash_news_section');
             if ($show_flash_news_section):
@@ -140,7 +140,7 @@ if (!function_exists('newsup_front_page_banner_section')) :
      * @since Newsup
      *
      */
-    function newsup_front_page_banner_section()
+    function jarvis_front_page_banner_section()
     {
         if (is_front_page() || is_home()) {
         $newsup_enable_main_slider = newsup_get_option('show_main_news_section');
