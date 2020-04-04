@@ -162,7 +162,7 @@ if (!function_exists('newsup_front_page_banner_section')) :
                                 <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10">
                                   <?php
                                   // This code was pulled from ../newsup/inc/hooks/blocks/block-banner-list.php
-                                  // and controls "The Loop" which populates the Home Feature Post Banner.
+                                  // and controls "The Loop" which populates the Home Feature Post Carousel.
                                   $newsup_slider_category = newsup_get_option('select_slider_news_category');
                                   $newsup_number_of_slides = newsup_get_option('number_of_slides');
                                   $newsup_all_posts_main = newsup_get_posts($newsup_number_of_slides, $newsup_slider_category);
@@ -185,13 +185,22 @@ if (!function_exists('newsup_front_page_banner_section')) :
                                                       <?php endif; ?>
                                                       </a>
                                                   </div>
-
+                                                  <!-- POST FEATURE ITEM -->
                                                   <article class="bottom">
                                                           <span class="post-form"><i class="fa fa-camera"></i></span>
                                                           <div class="mg-blog-category"> <?php newsup_post_categories(); ?> </div>
                                                           <h1 class="title"> <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-                                                          <?php newsup_post_meta(); ?>
+                                                          <!-- POST META DATA: DATE AUTHOR -->
+                                                          <div class="mg-blog-meta">
+                                                              <span class="mg-blog-date"><i class="fa fa-clock-o"></i>
+                                                               <a href="<?php echo esc_url(get_month_link(get_post_time('Y'),get_post_time('m'))); ?>">
+                                                               <?php echo esc_html(get_the_date('M j, Y')); ?></a></span>
+                                                               <a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><i class="fa fa-user-circle-o"></i>
+                                                              <?php the_author(); ?></a>
+                                                          </div>
+                                                          <!-- END POST META -->
                                                   </article>
+                                                  <!-- END POST FEATURE -->
                                               </div>
                                           </div>
                                       <?php
