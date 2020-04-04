@@ -1,12 +1,13 @@
-# ignore everything in the root except the "public/wp-content" directory.
+# ignore everything in the root
 public/*
-!public/wp-content/
 
 # track everything in the "public/wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 !public/wp-content/mu-plugins/
 !public/wp-content/plugins/
-!public/wp-content/themes/
+
+public/wp-content/themes/*
+!public/wp-content/themes/newsup*
 
 # track node dependency directories
 node_modules/
