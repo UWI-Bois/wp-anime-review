@@ -84,7 +84,7 @@
     </div>
 </header>
 <div class="clearfix"></div>
-<?php  if (is_front_page() || is_home()) { ?>
+<?php  if (is_front_page() || is_home() || true) { ?>
 <section class="mg-tpt-tag-area">
   <div class="container-fluid">
  <?php $show_popular_tags_title = newsup_get_option('show_popular_tags_title');
