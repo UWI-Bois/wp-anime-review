@@ -71,7 +71,7 @@
             if($newsup_enable_single_post_admin_details == true) { ?>
             <a class="mg-author-pic" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
                 <div class="media-body">
-                  <h4 class="media-heading"><?php esc_html_e('By','newsup'); ?> <a href "<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
+                  <h4 class="media-heading"><?php esc_html_e('By','newsup'); ?> <a href ="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
                   <p><?php the_author_meta( 'description' ); ?></p>
                 </div>
               <?php } ?>

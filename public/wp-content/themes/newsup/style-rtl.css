@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 2.3
+Version: 2.1
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -34,7 +34,7 @@ Text Domain: newsup
 }
 .mg-head-detail .info-left {
 	display: block;
-	float: left;
+	float: right;
 	margin: 0;
 	padding: 0;
 }
@@ -305,8 +305,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-weight: 400;
 	line-height: 30px;
-	word-wrap: break-word;
+	direction: rtl; 
 }
+
 .sticky {
 	display: block;
 }
@@ -601,7 +602,7 @@ blockquote {
 blockquote::before {
 	content: "\f10d";
 	display: table;
-	float: left;
+	float: right;
 	font-family: "FontAwesome";
 	font-size: 28px;
 	margin-top: 6px;
@@ -821,7 +822,7 @@ button.mfp-close:hover, button.mfp-close:focus {
     bottom: 0;
 }
 .mg-blog-post .bottom h1 {
-	float: left;
+	float: right;
 	font-size: 32px;
 	font-weight: 700;
 	line-height: 120%;
@@ -871,14 +872,14 @@ button.mfp-close:hover, button.mfp-close:focus {
 	position: relative;
     width: 100%;
     margin-bottom: 22px;
-    float: left;
+    float: right;
     transition: all .3s ease-out;
 	min-height: 45px;
 }
 .mg-blog-thumb img {
 	position: relative;
 	max-width: 100%;
-	float: left;
+	float: right;
 	height: auto;
 	border-radius: 0;
 }
@@ -941,7 +942,7 @@ button.mfp-close:hover, button.mfp-close:focus {
     width: auto;
 }
 .mg-blog-category a {
-    display: inline-block;
+    display: inline;
     font-size: 10px;
     padding: 4px 6px;
     line-height: 10px;
@@ -1037,7 +1038,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 }
 .mg-info-author-block .mg-author-pic img {
 	margin: 0 25px 15px 0;
-	float: left;
+	float: right;
 	border-radius: 50%;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 	width: 80px;
@@ -1256,16 +1257,10 @@ button.mfp-close:hover, button.mfp-close:focus {
   line-height: 28px;
 }
 .mg-blog-post .tittle, .mg-blog-inner h1.title, .mg-blog-post-box h1.title, .small-list-post h5.title, .mg-blog-post .bottom h1, .title_small_post, .mg-posts-modul-6 .mg-sec-top-post .title, .mg-no-list-area .mg-blog-post h3 {
-	overflow-y: hidden;
-}
-.small-list-post h5.title, .title_small_post {
-	max-height: 50px;
-}
-.mg-blog-inner h1, .mg-blog-inner h1.title, .mg-posts-modul-6 .mg-sec-top-post .title{
-	max-height: 70px;
-}
-.mg-blog-post .bottom h1 {
-	max-height: 75px;
+	overflow: hidden;
+  	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 .mg-blog-post-3 {
   position: relative;
@@ -1372,7 +1367,7 @@ button.mfp-close:hover, button.mfp-close:focus {
 }
 .mg-posts-sec-inner .img-small-post{
   height: 88px;
-  float:left;
+  float:right;
   margin-right: 20px;
 }
 .small-list-post ul{
@@ -2023,7 +2018,7 @@ footer .mg-footer-copyright p, footer .mg-footer-copyright a {
 }
 .mg-social li span.icon-soci {
 	display: inline-block;
-	float: left;
+	float: right;
 	height: 35px;
 	line-height: 35px;
 	margin: 0;
@@ -2284,7 +2279,7 @@ address i {
 .woocommerce-page .products a .price {
 	line-height: 20px;
 	width: 100%;
-	float: left;
+	float: right;
 	height: auto;
 	min-height: 40px;
 	text-align: center;
@@ -2311,7 +2306,7 @@ address i {
 	margin: 0;
 }
 .woocommerce-page .woocommerce-result-count {
-	float: left;
+	float: right;
 	font-size: 14px;
 	line-height: 46px;
 	margin-top: 20px;
@@ -2417,7 +2412,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	margin: 0px 0 40px;
 	border-radius: 3px;
 	border: none;
-	float: left;
+	float: right;
 	width: 100%;
 }
 .woocommerce-page .woocommerce-error a {
@@ -2430,7 +2425,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	margin: 0px 0 40px;
 	border-radius: 3px;
 	border: none;
-	float: left;
+	float: right;
 	width: 100%;
 	margin-top: 25px !important;
 }
@@ -2439,7 +2434,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	font-size: 12px;
 }
 .woocommerce-page .woocommerce-info {
-	float: left;
+	float: right;
 	text-align: left;
 	padding-top: 30px;
 }
@@ -2460,7 +2455,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	border: none;
 }
 .woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span {
-	float: left;
+	float: right;
 	line-height: 1.42857;
 	margin: 6px;
 	padding: 6px 12px;
@@ -2486,13 +2481,11 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	float: none;
 	text-align: center;
 	margin: 10px 0 17px;
-	float: none;
 }
 .mg-head-detail .info-right {
 	float: none;
 	text-align: center;
 	margin: 10px 0 17px;
-	float: none;
 }
 /* logo*/
 .navbar-default .navbar-brand {
@@ -2506,7 +2499,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 	z-index: 8;
 }
 .navbar-wp .mg-search-box {
-	float: left;
+	float: right;
 }
 .mg-search {
 	margin: 0 auto;
@@ -2536,9 +2529,6 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 }
 }
 @media screen and (min-width: 240px) and (max-width: 767px) {
-.top-right-area .nav-tabs > li > a i {
-	display: inherit;
-}
 /*--------------- ti-slider ---------------*/
 .navbar-wp .navbar-nav > li > a {
 	padding: 10px 16px;
@@ -2606,7 +2596,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 }
 .gallery-item {
 	margin: 0;
-	float: left;
+	float: right;
 	padding: 0.5em;
 }
 .gallery-item img {
@@ -2717,7 +2707,7 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
     transition: all 0.3s ease 0s;
     text-decoration: none;
     position: relative;
-    float: left;
+    float: right;
 }
 .navigation.pagination > li:first-child > a, .navigation.pagination > li:first-child > span {
     border-radius: 30px;
