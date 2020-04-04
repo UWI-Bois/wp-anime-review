@@ -107,6 +107,7 @@ if ($show_flash_news_section):
     $newsup_ticker_news_title = newsup_get_option('flash_news_title');
 
     $all_posts = newsup_get_posts($number_of_posts, $category);
+    $all_posts = new WP_Query(array('post_type' => 'anime', 'orderby' => 'date'));
     $show_trending = true;
     $count = 1;
     ?>
