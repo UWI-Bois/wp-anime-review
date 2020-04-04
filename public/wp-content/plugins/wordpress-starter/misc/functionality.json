@@ -1,0 +1,228 @@
+{
+"special_offers": [
+		{
+			"active_plugin": "woocommerce/woocommerce.php",
+			"inactive_plugin": "jilt-for-woocommerce/jilt-for-woocommerce.php",
+			"nonce": "jilt-for-woocommerce",
+			"title": "Email Markeing for Woo",
+			"icon": {
+				"file": "/assets/img/jilt.png",
+				"width": 47,
+				"height": 40
+			},
+			"link": "#jilt-for-woocommerce",
+			"button_text" : "Learn More",
+			"link_alt": "admin.php?page=wc-jilt",
+			"button_text_alt" : "Manage",
+			"button_style" : "popup-button",
+			"option_name" : "sw_show_jilt",
+			"condition" : "orders",
+			"condition_value" : 10,
+			"popup" : {
+				"title" : "Congratulations on the successful start of your WooCommerce site!",
+				"description" : "Want to elevate your customer communication to increase sales? Automate your customer lifecycle emails with Jilt eCommerce email marketing. Check out SiteGround’s special recommendation and boost your online business!",
+				"logo" : "/assets/img/jilt.png",
+				"logo_title" : "Email Markeing for Woo",
+				"button" : {
+					"text" : "Install",
+					"link" : "admin-ajax.php?action=siteground_wizard_install_plugin&plugin=jilt-for-woocommerce",
+					"target" : "_self",
+					"style" : "install-button"
+				}
+			}
+		},
+		{
+			"active_plugin": "wordpress-starter/siteground-wizard.php",
+			"inactive_plugin": "social-web-suite/social-web-suite.php",
+			"nonce": "social-web-suite",
+			"title": "Manage Social Media",
+			"icon": {
+				"file": "/assets/img/sws.png",
+				"width": 47,
+				"height": 40
+			},
+			"link": "#social-web-suite",
+			"button_text" : "Learn More",
+			"link_alt": "admin.php?page=social-web-suite",
+			"button_text_alt" : "Manage",
+			"button_style" : "popup-button",
+			"option_name" : "sw_show_sws",
+			"condition" : "time",
+			"condition_value" : 1209600,
+			"popup" : {
+				"title" : "Congratulations on the take off of your website!",
+				"description" : "Want a seamless way to share your content with the world? Connect your site with Social Web Suite to manage and automate your social media posts. Enjoy a special offer just for SiteGround clients!",
+				"steps" : [
+					{
+						"title" : "First Step",
+						"description" : "Create a new Social Media Suite Account",
+						"button" : {
+							"text" : "Visit Site",
+							"link" : "sg-affiliate-link",
+							"target" : "_blank",
+							"style" : "button--outlined"
+						},
+						"icon" : "/assets/img/man.svg"
+					},
+					{
+						"title" : "Second Step",
+						"description" : "Install the plugin and link your Social Media services",
+						"button" : {
+							"text" : "Install",
+							"link" : "admin-ajax.php?action=siteground_wizard_install_plugin&plugin=social-web-suite",
+							"target" : "_self",
+							"style" : "install-button"
+						},
+						"icon" : "/assets/img/circle.svg"
+					}
+				]
+			}
+		}
+	],
+	"active_plugins":[
+		{
+			"plugin_name": "woocommerce/woocommerce.php",
+			"title": "Check Orders",
+			"icon": {
+				"file": "/assets/img/woo.png",
+				"width": 54,
+				"height": 40
+			},
+			"link": "edit.php?post_type=shop_order",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "woocommerce/woocommerce.php",
+			"title": "Create & Edit Products",
+			"icon": {
+				"file": "/assets/img/woo.png",
+				"width": 54,
+				"height": 40
+			},
+			"link": "edit.php?post_type=product",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "the-events-calendar/the-events-calendar.php",
+			"title": "Create & Edit Events",
+			"icon": {
+				"file": "/assets/img/events.png",
+				"width": 40,
+				"height": 40
+			},
+			"link": "edit.php?post_type=tribe_events",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "wp-google-maps/wpGoogleMaps.php",
+			"title": "Create Maps",
+			"icon": {
+				"file": "/assets/img/wpmaps.png",
+				"width": 40,
+				"height": 40
+			},
+			"link": "admin.php?page=wp-google-maps-menu&override=1",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "foogallery/foogallery.php",
+			"title": "Build Galleries",
+			"icon": {
+				"file": "/assets/img/foo.png",
+				"width": 40,
+				"height": 40
+			},
+			"link": "edit.php?post_type=foogallery&page=foogallery",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "jetpack/jetpack.php",
+			"title": "Configure JetPack",
+			"icon": {
+				"file": "/assets/img/jetpack.png",
+				"width": 40,
+				"height": 40
+			},
+			"link": "admin.php?page=jetpack",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "wordpress-seo/wp-seo.php",
+			"title": "Check your SEO",
+			"icon": {
+				"file": "/assets/img/yoast.png",
+				"width": 33,
+				"height": 40
+			},
+			"link": "admin.php?page=wpseo_dashboard",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "google-analytics-for-wordpress/googleanalytics.php",
+			"title": "Configure Google Analytics",
+			"icon": {
+				"file": "/assets/img/monsterinsights.png",
+				"width": 41,
+				"height": 40
+			},
+			"link": "admin.php?page=monsterinsights_settings",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "optinmonster/optin-monster-wp-api.php",
+			"title": "Your Subscription List",
+			"icon": {
+				"file": "/assets/img/optinmonster.png",
+				"width": 47,
+				"height": 40
+			},
+			"link": "admin.php?page=optin-monster-api-settings",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "jilt-for-woocommerce/jilt-for-woocommerce.php",
+			"title": "Email Markeing for Woo",
+			"icon": {
+				"file": "/assets/img/jilt.png",
+				"width": 47,
+				"height": 40
+			},
+			"link": "admin.php?page=wc-jilt",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "wpforms-lite/wpforms.php",
+			"title": "Create & Edit Forms",
+			"icon": {
+				"file": "/assets/img/wpforms.png",
+				"width": 52,
+				"height": 40
+			},
+			"link": "admin.php?page=wpforms-overview",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		},
+		{
+			"plugin_name": "social-web-suite/social-web-suite.php",
+			"title": "Manage Social Media",
+			"icon": {
+				"file": "/assets/img/sws.png",
+				"width": 47,
+				"height": 40
+			},
+			"link": "admin.php?page=social-web-suite",
+			"button_text" : "Manage",
+			"button_style" : "button--outlined"
+		}
+	]
+}

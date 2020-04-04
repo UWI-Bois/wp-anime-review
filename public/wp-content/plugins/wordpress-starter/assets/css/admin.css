@@ -1,0 +1,13 @@
+.dashboard_page_custom-dashboard div#setting-error-tgmpa {
+  display: none !important; }
+
+.sg--dashboard {
+  text-align: center;
+  padding: 10px 20px 20px; }
+
+.sg--icon {
+  width: 80px;
+  margin: 0 auto; }
+
+.sg--dashboard .button {
+  margin-top: 10px; }

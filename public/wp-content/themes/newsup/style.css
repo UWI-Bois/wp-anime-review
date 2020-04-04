@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 1.9
+Version: 2.2
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -305,6 +305,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-weight: 400;
 	line-height: 30px;
+	word-wrap: break-word;
 }
 .sticky {
 	display: block;
@@ -658,7 +659,7 @@ table, th, td {
 	2.4.Button Styles           
 -----------------------------------------*/
 .btn {
-	padding: 10px 35px;
+	padding: 2px 26px;
 	line-height: 30px;
 	overflow: hidden;
 	position: relative;
@@ -940,7 +941,7 @@ button.mfp-close:hover, button.mfp-close:focus {
     width: auto;
 }
 .mg-blog-category a {
-    display: inline;
+    display: inline-block;
     font-size: 10px;
     padding: 4px 6px;
     line-height: 10px;
@@ -1255,10 +1256,16 @@ button.mfp-close:hover, button.mfp-close:focus {
   line-height: 28px;
 }
 .mg-blog-post .tittle, .mg-blog-inner h1.title, .mg-blog-post-box h1.title, .small-list-post h5.title, .mg-blog-post .bottom h1, .title_small_post, .mg-posts-modul-6 .mg-sec-top-post .title, .mg-no-list-area .mg-blog-post h3 {
-	overflow: hidden;
-  	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
+	overflow-y: hidden;
+}
+.small-list-post h5.title, .title_small_post {
+	max-height: 50px;
+}
+.mg-blog-inner h1, .mg-blog-inner h1.title, .mg-posts-modul-6 .mg-sec-top-post .title{
+	max-height: 65px;
+}
+.mg-blog-post .bottom h1 {
+	max-height: 75px;
 }
 .mg-blog-post-3 {
   position: relative;
@@ -1327,6 +1334,8 @@ button.mfp-close:hover, button.mfp-close:focus {
     border-width: 40px 0 0px 30px;
     content: "";
 }
+
+.featured-post-1{display: none;}
 
 /*blocks Posts*/
 .mg-posts-sec{
@@ -2527,6 +2536,9 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
 }
 }
 @media screen and (min-width: 240px) and (max-width: 767px) {
+.top-right-area .nav-tabs > li > a i {
+	display: inherit;
+}
 /*--------------- ti-slider ---------------*/
 .navbar-wp .navbar-nav > li > a {
 	padding: 10px 16px;

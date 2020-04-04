@@ -1,3 +1,4 @@
+single-anime.php -> details for a single anime
 <!-- =========================
      Page Breadcrumb
 ============================== -->

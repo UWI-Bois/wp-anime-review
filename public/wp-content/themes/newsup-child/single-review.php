@@ -1,3 +1,4 @@
+single-review.php -> details about a single review.
 <!-- =========================
      Page Breadcrumb
 ============================== -->

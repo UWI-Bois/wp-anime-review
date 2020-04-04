@@ -1,0 +1,44 @@
+{
+	"wpforms": {
+		"1" : "http://www.siteground.com/tracking/wpstarter_wpforms",
+		"2" : "http://www.siteground.com/tracking/wpstarter_wpforms_es",
+		"3" : "https://www.siteground.com/tracking/wpstarter_wpforms_uk",
+		"4" : "http://www.siteground.com/tracking/wpstarter_wpforms",
+		"5" : "https://www.siteground.com/tracking/wpstarter_wpforms_uk"
+	},
+	"neve": {
+		"1" : "http://www.siteground.com/tracking/wpstarter_themeisle",
+		"2" : "http://www.siteground.com/tracking/wpstarter_themeisle_es",
+		"3" : "https://www.siteground.com/tracking/wpstarter_themeisle_uk",
+		"4" : "http://www.siteground.com/tracking/wpstarter_themeisle",
+		"5" : "https://www.siteground.com/tracking/wpstarter_themeisle_uk"
+	},
+	"jilt-for-woocommerce": {
+		"1" : "100",
+		"2" : "99",
+		"3" : "98",
+		"4" : "100",
+		"5" : "98"
+	},
+	"social-web-suite": {
+		"1" : "http://www.siteground.com/tracking/wpstarter_socialwebsuite",
+		"2" : "http://www.siteground.com/tracking/wpstarter_socialwebsuite_es",
+		"3" : "http://www.siteground.com/tracking/wpstarter_socialwebsuite_uk",
+		"4" : "http://www.siteground.com/tracking/wpstarter_socialwebsuite",
+		"5" : "http://www.siteground.com/tracking/wpstarter_socialwebsuite_uk"
+	},
+	"google-analytics-for-wordpress": {
+		"1" : "2131496",
+		"2" : "2167744",
+		"3" : "2165093",
+		"4" : "2131496",
+		"5" : "2165093"
+	},
+	"optinmonster": {
+		"1" : "https://www.siteground.com/tracking/wpstarter_optinmonster",
+		"2" : "https://www.siteground.com/tracking/wpstarter_optinmonster_es",
+		"3" : "https://www.siteground.com/tracking/wpstarter_optinmonster_uk",
+		"4" : "https://www.siteground.com/tracking/wpstarter_optinmonster",
+		"5" : "https://www.siteground.com/tracking/wpstarter_optinmonster_uk"
+	}
+}

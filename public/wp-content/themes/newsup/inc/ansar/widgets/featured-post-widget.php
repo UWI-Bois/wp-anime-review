@@ -87,7 +87,7 @@
 
         	<div class="mg-posts-sec-inner row">
             	<!-- mg-posts-sec-inner -->
-            	<div class="<?php echo ($style == 0) ? 'col-lg-6 col-md-6 col-sm-6 col-xs-12' : 'col-12 ' ;?> first-col">
+            	<div class="<?php echo ($style == 0) ? 'col-lg-6 col-md-6 col-sm-6 col-xs-12' : 'col-12 ' ;?>">
                     <!--  post lg -->   
                     <div class="mg-blog-post lg">
 					<?php
@@ -113,7 +113,7 @@
 					</div> <!-- /post lg -->             
 				</div> <!-- /col-md-6 -->
 
-				<div class="<?php echo ($style == 0) ? 'col-md-6 ' : 'col-lg-6 col-md-6 col-sm-6 col-xs-12' ;?> second-col small-list-post">
+				<div class="small-list-post <?php echo ($style == 0) ? 'col-lg-6 col-md-6 col-sm-6 col-xs-12' : 'col-12' ;?> ">
 					<!-- small-list-post -->
                 	<ul>
 					<?php } ?>

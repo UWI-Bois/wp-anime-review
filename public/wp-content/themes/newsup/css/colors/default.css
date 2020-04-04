@@ -106,6 +106,9 @@ a.newsup-categories.category-color-4{background: #82b74b;}
 	border-color: #1151d3;
 	color: #fff;
 }
+
+.btn:hover, .btn:focus, .btn.focus{
+	color: #fff;}
 /*=== navbar drop down hover color ===*/
 .navbar-base .navbar-nav > .open > a, .navbar-base .navbar-nav > .open > a:hover, .navbar-base .navbar-nav > .open > a:focus {
 	color: #fff;

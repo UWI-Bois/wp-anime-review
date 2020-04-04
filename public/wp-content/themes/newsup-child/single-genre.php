@@ -1,3 +1,4 @@
+single-genre.php -> details about a single genre
 <!-- =========================
      Page Breadcrumb
 ============================== -->
