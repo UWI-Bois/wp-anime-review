@@ -66,6 +66,33 @@ single-anime.php
               </article>
             </div>
 		      <?php } ?>
+<!--                    list genres and anime info here-->
+                    <?php
+                    $related_genres = get_field('anime_genres');
+                    ?>
+                    <div class="media mg-info-author-block">
+                        <div class="media-body">
+                            <h1 class="media-heading">About <?php the_title(); ?></h1>
+<!--                            print genres only if there are any associated-->
+                            <?php
+                            if($related_genres) {
+	                            ?>
+                                <h3>Genres</h3>
+                                <ul>
+                                <?php
+                                foreach ($related_genres as $genre) { ?>
+                                    <li>
+                                        <a href="<?php echo get_the_permalink($genre); ?>">
+                                            <?php echo get_the_title($genre); ?>
+                                        </a>
+                                    </li>
+	                                <?php
+                                } // end foreach
+                            } // end if
+                            ?>
+                                </ul>
+                        </div>
+                    </div>
 
            <div class="media mg-info-author-block">
             <?php $newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
@@ -79,6 +106,9 @@ single-anime.php
             </div><?php $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
                                 if($newsup_enable_related_post == true){
                             ?>
+
+
+
               <div class="mg-featured-slider">
                         <!--Start mg-realated-slider -->
                         <div class="mg-sec-title">
