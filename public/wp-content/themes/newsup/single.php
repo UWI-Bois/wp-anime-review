@@ -7,6 +7,7 @@
 <!-- =========================
      Page Content Section      
 ============================== -->
+single.php
 <main id="content">
     <!--container-->
     <div class="container-fluid">
