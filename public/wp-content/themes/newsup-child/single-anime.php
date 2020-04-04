@@ -7,7 +7,7 @@
 <!-- =========================
      Page Content Section
 ============================== -->
-single-anime.php
+<!--<p>single-anime.php -> in child dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">
@@ -72,13 +72,15 @@ single-anime.php
                     $author = get_field('anime_author'); // text area
                     $release_date = get_field('anime_release_date'); // date picker
                     $languages = get_field('anime_languages'); // checkbox
+//                    print_r($release_date); // print as a normal string
+//                    print_r($languages); // print using foreach
                     ?>
                     <div class="media mg-info-author-block">
                         <div class="media-body">
                             <h1 class="media-heading">About <?php the_title(); ?></h1>
                             <h3>Author</h3>
-                            
                             <p><?php echo $author; ?></p>
+
 <!--                            print genres only if there are any associated-->
                             <?php
                             if($genres) {
@@ -90,6 +92,25 @@ single-anime.php
                                     <li>
                                         <a href="<?php echo get_the_permalink($genre); ?>">
                                             <?php echo get_the_title($genre); ?>
+                                        </a>
+                                    </li>
+	                                <?php
+                                } // end foreach
+                            } // end if
+                            ?>
+                                </ul>
+
+<!--                            print languages only if there are any associated-->
+                            <?php
+                            if($languages) {
+	                            ?>
+                                <h3>Language(s)</h3>
+                                <ul>
+                                <?php
+                                foreach ($languages as $language) { ?>
+                                    <li>
+                                        <a href="<?php echo get_the_permalink($language); ?>">
+                                            <?php echo $language; ?>
                                         </a>
                                     </li>
 	                                <?php

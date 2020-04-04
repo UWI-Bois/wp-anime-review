@@ -7,7 +7,7 @@
 <!-- =========================
      Page Content Section
 ============================== -->
-single-genre.php
+<!--<p>single-genre.php -> in child dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">

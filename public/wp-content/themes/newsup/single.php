@@ -7,7 +7,7 @@
 <!-- =========================
      Page Content Section      
 ============================== -->
-single.php
+<!--<p>single.php -> in parent dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">

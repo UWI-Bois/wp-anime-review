@@ -7,7 +7,7 @@
 <!-- =========================
      Page Content Section
 ============================== -->
-single-review.php
+<!--<p>single-review.php -> in child dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">
