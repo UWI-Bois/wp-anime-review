@@ -20,7 +20,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                     <h4><?php echo esc_html($you_missed_title); ?></h4>
                 </div>
             </div>
-            <?php } 
+            <?php }
             $newsup_you_missed_loop = new WP_Query(array( 'post_type' => 'post', 'posts_per_page' => 4, 'order' => 'DESC',  'ignore_sticky_posts' => true));
             if ( $newsup_you_missed_loop->have_posts() ) :
             while ( $newsup_you_missed_loop->have_posts() ) : $newsup_you_missed_loop->the_post(); ?>
@@ -29,7 +29,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                 <div class="mg-blog-post-3">
                     <?php if(has_post_thumbnail()) { ?>
                     <div class="mg-blog-img">
-                        <?php 
+                        <?php
                         echo '<a href="'.esc_url(get_the_permalink()).'">';
                             the_post_thumbnail( '', array( 'class'=>'img-responsive' ) );
                             echo '</a>'; ?>
@@ -49,7 +49,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
             </div>
             <!--/col-md-3-->
          <?php endwhile; endif; wp_reset_postdata(); ?>
-            
+
 
                 </div>
             </div>
@@ -58,11 +58,11 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
     </div>
 <!--==================== FOOTER AREA ====================-->
     <?php $newsup_footer_widget_background = get_theme_mod('newsup_footer_widget_background');
-    $newsup_footer_overlay_color = get_theme_mod('newsup_footer_overlay_color'); 
+    $newsup_footer_overlay_color = get_theme_mod('newsup_footer_overlay_color');
    if($newsup_footer_widget_background != '') { ?>
     <footer style="background-image:url('<?php echo esc_url($newsup_footer_widget_background);?>');">
      <?php } else { ?>
-    <footer> 
+    <footer>
     <?php } ?>
         <div class="overlay" style="background-color: <?php echo esc_html($newsup_footer_overlay_color);?>;">
                 <!--Start mg-footer-widget-area-->
@@ -85,7 +85,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                         <div class="row">
                             <!--col-md-4-->
                             <div class="col-md-6">
-                               <?php the_custom_logo(); 
+                               <?php the_custom_logo();
                                if (display_header_text()) : ?>
                               <div class="site-branding-text">
                               <h1 class="site-title"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
@@ -94,7 +94,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                               <?php endif; ?>
                             </div>
 
-                             <?php 
+                             <?php
                               $footer_social_icon_enable = esc_attr(get_theme_mod('footer_social_icon_enable','true'));
                               if($footer_social_icon_enable == true)
                               {
@@ -113,7 +113,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                               ?>
 
                             <div class="col-md-6 text-right text-xs">
-                                
+
                             <ul class="mg-social">
                                     <?php if($newsup_footer_fb_link !=''){?>
                                     <li><span class="icon-soci facebook"><a <?php if($newsup_footer_fb_target) { ?> target="_blank" <?php } ?>href="<?php echo esc_url($newsup_footer_fb_link); ?>"><i class="fa fa-facebook"></i></a></span> </li>
@@ -121,13 +121,13 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                                     <li><span class="icon-soci twitter"><a <?php if($newsup_footer_twt_target) { ?>target="_blank" <?php } ?>href="<?php echo esc_url($newsup_footer_twt_link);?>"><i class="fa fa-twitter"></i></a></span></li>
                                     <?php } if($newsup_footer_lnkd_link !=''){ ?>
                                     <li><span class="icon-soci linkedin"><a <?php if($newsup_footer_lnkd_target) { ?>target="_blank" <?php } ?> href="<?php echo esc_url($newsup_footer_lnkd_link); ?>"><i class="fa fa-linkedin"></i></a></span></li>
-                                    <?php } 
+                                    <?php }
                                     if($newsup_footer_insta_link !=''){ ?>
                                     <li><span class="icon-soci instagram"><a <?php if($newsup_footer_insta_target) { ?>target="_blank" <?php } ?> href="<?php echo esc_url($newsup_footer_insta_link); ?>"><i class="fa fa-instagram"></i></a></span></li>
                                     <?php }
                                     if($newsup_footer_youtube_link !=''){ ?>
                                     <li><span class="icon-soci youtube"><a <?php if($newsup_footer_youtube_target) { ?>target="_blank" <?php } ?> href="<?php echo esc_url($newsup_footer_youtube_link); ?>"><i class="fa fa-youtube"></i></a></span></li>
-                                    <?php } 
+                                    <?php }
                                     if($newsup_footer_pinterest_link !=''){ ?>
                                     <li><span class="icon-soci pinterest"><a <?php if($newsup_footer_pinterest_target) { ?>target="_blank" <?php } ?> href="<?php echo esc_url($newsup_footer_pinterest_link); ?>"><i class="fa fa-pinterest-p"></i></a></span></li>
                                     <?php } ?>
@@ -135,8 +135,8 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
 
 
                             </div>
-                            <!--/col-md-4-->  
-                            <?php } ?> 
+                            <!--/col-md-4-->
+                            <?php } ?>
                         </div>
                         <!--/row-->
                     </div>
@@ -172,7 +172,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
         								'menu_class' => 'info-right',
         								'fallback_cb' => 'newsup_fallback_page_menu',
         								'walker' => new newsup_nav_walker()
-        							) ); 
+        							) );
         						?>
                             </div>
                         </div>

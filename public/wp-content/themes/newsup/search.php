@@ -9,21 +9,20 @@ get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
 <?php get_template_part('index','banner'); ?>
 <!--==================== main content section ====================-->
-<main id="content">
-<div class="container-fluid">
-       <!--row-->
-         <div class="row">
-      <div class="<?php echo ( !is_active_sidebar( 'sidebar_primary' ) ? '12' :'8' ); ?> col-md-8">
-         <?php 
-		if ( have_posts() ) : ?>
-		<h2><?php /* translators: %s: search term */ printf( esc_html__( 'Search Results for: %s','newsup'), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h2>
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="content">
+    <!--container-->
+    <div class="container-fluid">
+    <!--row-->
+        <div class="row">
+            <div class="col-md-<?php echo ( !is_active_sidebar( 'sidebar-1' ) ? '12' :'8' ); ?> col-xs-12">
+                <h2><?php /* translators: %s: search term */ printf( esc_html__( 'Search Results for: %s','newsup'), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h2>
+                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <!-- mg-posts-sec mg-posts-modul-6 -->
                             <div class="mg-posts-sec mg-posts-modul-6">
                                 <!-- mg-posts-sec-inner -->
                                 <div class="mg-posts-sec-inner">
-
-		<?php while ( have_posts() ) : the_post();   ?>
+                                    <?php if ( have_posts() ) : /* Start the Loop */
+                                    while ( have_posts() ) : the_post(); ?>
                                     <article class="mg-posts-sec-post">
                                         <div class="standard_post">
                                             <?php if(has_post_thumbnail()) { ?>
@@ -66,26 +65,29 @@ get_header(); ?>
                                             </div>
                                         </div>
                                     </article>
-                                     <?php endwhile; else : ?>
-		<h2><?php esc_html_e( "Nothing Found", 'newsup' ); ?></h2>
-		<div class="">
-		<p><?php esc_html_e( "Sorry, but nothing matched your search criteria. Please try again with some different keywords.", 'newsup' ); ?>
-		</p>
-		<?php get_search_form(); ?>
-		</div><!-- .blog_con_mn -->
-		<?php endif; ?>
-		</div>
+                                    <?php endwhile; else :?>
+                                    
+        <h2><?php esc_attr_e( "Nothing Found", 'newsup' ); ?></h2>
+        <div class="">
+        <p><?php esc_attr_e( "Sorry, but nothing matched your search criteria. Please try again with some different keywords.", 'newsup' ); ?>
+        </p>
+        <?php get_search_form(); ?>
+        </div><!-- .blog_con_mn -->
+        <?php endif; ?>
                                 </div>
                                 <!-- // mg-posts-sec-inner -->
                             </div>
                             <!-- // mg-posts-sec block_6 -->
-      </div>
-	  <aside class="col-md-4 col-sm-4">
-        <?php get_sidebar(); ?>
-      </aside>
-    </div>
-  </div>
-</main>
+
+                            <!--col-md-12-->
+</div>
+            </div>
+            <aside class="col-md-4 col-sm-4">
+                    <?php get_sidebar();?>
+            </aside>
+        </div><!--/row-->
+    </div><!--/container-->
+</div>
 <?php
 get_footer();
 ?>

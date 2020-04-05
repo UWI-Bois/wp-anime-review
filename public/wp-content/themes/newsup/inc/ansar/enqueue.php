@@ -4,6 +4,8 @@
 
 	wp_enqueue_style( 'newsup-style', get_stylesheet_uri() );
 
+	wp_style_add_data( 'newsup-style', 'rtl', 'replace' );
+
 	wp_enqueue_style('newsup-default', get_template_directory_uri() . '/css/colors/default.css');
 
 	wp_enqueue_style('font-awesome',get_template_directory_uri().'/css/font-awesome.css');
