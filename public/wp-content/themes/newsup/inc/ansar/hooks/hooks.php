@@ -1,19 +1,19 @@
-<?php
+<?php 
 /**
 PHP functions & Hooks:
-Theme URL: https://wordpress.org/themes/newsphere/,
+Theme URL: https://wordpress.org/themes/newsphere/, 
 http://afthemes.com/, (C) 2020 AF Themes, GPLv2
 */
-if (!function_exists('newsup_banner_exclusive_posts')):
+if (!function_exists('newsup_banner_trending_posts')):
     /**
      *
      * @since newsup 1.0.0
      *
      */
-    function newsup_banner_exclusive_posts()  {
+    function newsup_banner_exclusive_posts()  { 
             if (is_front_page() || is_home()) {
                 $show_flash_news_section = newsup_get_option('show_flash_news_section');
-            if ($show_flash_news_section):
+            if ($show_flash_news_section): 
         ?>
             <section class="mg-latest-news-sec">
                 <?php
@@ -69,7 +69,7 @@ if (!function_exists('newsup_banner_tabbed_posts')):
      */
     function newsup_banner_tabbed_posts()
     {
-
+        
             $show_excerpt = 'false';
             $excerpt_length = '20';
             $number_of_posts = '4';
@@ -166,7 +166,7 @@ if (!function_exists('newsup_banner_advertisement')):
                             <?php echo $newsup_banner_advertisement; ?>
                         </a>
                     </div>
-                <?php endif; ?>
+                <?php endif; ?>                
 
             </div>
             <!-- Trending line END -->
@@ -177,7 +177,7 @@ if (!function_exists('newsup_banner_advertisement')):
             <div class="mg-ads-area">
                 <?php dynamic_sidebar('home-advertisement-widgets'); ?>
             </div>
-                <?php endif;
+                <?php endif; 
     }
 endif;
 
@@ -287,7 +287,7 @@ if (!function_exists('newsup_front_page_banner_section')) :
         $select_vertical_slider_news_category = newsup_get_option('select_vertical_slider_news_category');
         $vertical_slider_number_of_slides = newsup_get_option('vertical_slider_number_of_slides');
         $all_posts_vertical = newsup_get_posts($vertical_slider_number_of_slides, $select_vertical_slider_news_category);
-        if ($newsup_enable_main_slider):
+        if ($newsup_enable_main_slider):  
 
             $main_banner_section_background_image = newsup_get_option('main_banner_section_background_image');
             $main_banner_section_background_image_url = wp_get_attachment_image_src($main_banner_section_background_image, 'full');
@@ -301,11 +301,11 @@ if (!function_exists('newsup_front_page_banner_section')) :
                     <div class="">
                         <div class="col-md-8">
                             <div class="row">
-                                <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10">
+                                <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10"> 
                                 <?php newsup_get_block('list', 'banner'); ?>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <?php do_action('newsup_action_banner_tabbed_posts');?>
                     </div>
                 </div>
@@ -318,3 +318,4 @@ if (!function_exists('newsup_front_page_banner_section')) :
     }
 endif;
 add_action('newsup_action_front_page_main_section_1', 'newsup_front_page_banner_section', 40);
+
