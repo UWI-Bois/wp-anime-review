@@ -103,7 +103,8 @@
                                     else { ?>
                                         <h1 class="media-heading"> No <?php the_title(); ?> Titles </h1>
                                         <?php
-                                    }
+                                    } // end else
+                                    wp_reset_postdata(); // clear the query object
                                     ?>
 
                                 </div>
