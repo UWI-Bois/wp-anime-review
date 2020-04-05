@@ -15,6 +15,9 @@
         <div class="row">
             <!--col-md-->
             <?php
+            $this_id = get_the_ID();
+            $this_title = get_the_title();
+            //        echo $this_id;
             $newsup_single_page_layout = get_theme_mod('newsup_single_page_layout','single-align-content-right');
             if($newsup_single_page_layout == "single-align-content-left")
             { ?>
@@ -44,8 +47,8 @@
 
                                         <div class="media mg-info-author-block"> <a class="mg-author-pic" href="#"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?> </a>
                                             <div class="media-body">
-                                                <h4 class="media-heading"><span><?php esc_html_e('By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                                                <span class="mg-blog-date"><?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
+                                                <h4 class="media-heading"><span><?php esc_html_e('Posted By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
+                                                <span class="mg-blog-date">Date Posted: <?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
                                                 <?php $tag_list = get_the_tag_list();
                                                 if($tag_list){ ?>
                                                     <span class="newsup-tags"><a href="<?php the_permalink(); ?>"><?php the_tags('', ', ', ''); ?></a></span>
@@ -66,6 +69,7 @@
                                     </article>
                                 </div>
                             <?php } ?>
+
                             <!--                    list genres and anime information here-->
                             <?php
                             $related_anime = new WP_Query(array(
@@ -109,19 +113,28 @@
                                 </div>
                             </div>
 
-                            <div class="media mg-info-author-block">
-                            <?php $newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
-                            if($newsup_enable_single_post_admin_details == true) { ?>
-                                <a class="mg-author-pic" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><?php esc_html_e('By','newsup'); ?> <a href "<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                                    <p><?php the_author_meta( 'description' ); ?></p>
-                                </div>
-                            <?php } ?>
-                            </div><?php $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+
+
+
+                            <!--                  author card-->
+                            <!--           <div class="media mg-info-author-block">-->
+                            <!--            --><?php //$newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
+//            if($newsup_enable_single_post_admin_details == true) { ?>
+                            <!--            <a class="mg-author-pic" href="--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //echo get_avatar( get_the_author_meta( 'ID') , 150); ?><!--</a>-->
+                            <!--                <div class="media-body">-->
+                            <!--                  <h4 class="media-heading">--><?php //esc_html_e('Posted By','newsup'); ?><!-- <a href "--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //the_author(); ?><!--</a></h4>-->
+                            <!--                  <p>--><?php //the_author_meta( 'description' ); ?><!--</p>-->
+                            <!--                </div>-->
+                            <!--              --><?php //} ?>
+                            <!--            </div>-->
+                            <?php
+                            $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+                            $newsup_enable_related_post = false; // comment out this line to print the related post card on this single page.
                             if($newsup_enable_related_post == true){
                                 ?>
 
+
+                                <!--                this is for the related posts card -->
                                 <div class="mg-featured-slider">
                                     <!--Start mg-realated-slider -->
                                     <div class="mg-sec-title">
@@ -208,7 +221,7 @@
                         <!--sidebar-->
                         <!--col-md-3-->
                         <aside class="col-md-3 col-sm-4">
-                            <?php get_sidebar();?>
+                            <?php get_sidebar(); // load the widgest on the side (meta, recent comments, etc)?>
                         </aside>
                         <!--/col-md-3-->
                         <!--/sidebar-->

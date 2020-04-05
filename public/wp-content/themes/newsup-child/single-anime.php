@@ -69,6 +69,7 @@
               </article>
             </div>
 		      <?php } ?>
+
 <!--                    list genres and anime information here-->
                     <?php
                     $genres = get_field('anime_genres'); // relationship (other post type)
