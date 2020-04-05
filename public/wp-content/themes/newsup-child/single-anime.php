@@ -15,6 +15,9 @@
       <div class="row">
         <!--col-md-->
         <?php
+        $this_id = get_the_ID();
+        $this_title = get_the_title();
+//        echo $this_id;
                     $newsup_single_page_layout = get_theme_mod('newsup_single_page_layout','single-align-content-right');
                     if($newsup_single_page_layout == "single-align-content-left")
                     { ?>
@@ -145,26 +148,14 @@
                   );
                   $query_all = array(
                       'posts_per_page' => -1,
-                      'post_type'=> 'post',
+                      'post_type'=> 'anime_review',
                       'orderby' => 'title',
-                      'order' => 'ASC',
+                      'order' => 'ASC'
                   );
-//                  $reviews_query = new WP_Query($query_args_relational);
-                  $reviews_array = get_posts($query_all);
-                  $reviews_posts = array();
-                  foreach ($reviews_array as $item) {
-                      array_push($reviews_posts, setup_postdata($item));
-                  }
-                  $related_reviews = array();
-                  foreach ($reviews_posts as $item) {
-                      if(get_the_ID() == get_the_ID($item)) array_push($related_reviews, $item);
-                  }
-//                  echo (gettype($reviews_query)) . '<br>'; //array of associated review posts
-//                  echo (gettype($reviews_array)) . '<br>';
-//                  echo (gettype($reviews_posts)) . '<br>';
+                  $reviews_query = new WP_Query($query_all);
                   ?>
                   <?php
-                  if($related_reviews) { ?>
+                  if($reviews_query) { ?>
                       <div class="media mg-info-author-block">
                           <div class="mg-wid-title">
                               <h1>
@@ -172,15 +163,20 @@
                               </h1>
                           </div>
                           <div class="media-body">
-                              <ul> <?php
-                                  foreach ($related_reviews as $review) {?>
+                              <ul><?php
+                                    while($reviews_query->have_posts()){
+                                        $reviews_query->the_post();
+                                        $related_anime = get_field('review_anime');
+                                        if($this_title == get_the_title($related_anime)){
+                                      ?>
                                     <li>
-                                        <a href="<?php the_permalink($review); ?>">
-                                            <?php the_title($review); ?>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
                                         </a>
                                     </li>
+                                            <?php } // end if ?>
                           <?php
-                      } // end while ?>
+                      } // end loop ?>
                               </ul>
                           </div>
                       </div>
