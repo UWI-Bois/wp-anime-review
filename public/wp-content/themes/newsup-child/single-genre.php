@@ -106,7 +106,6 @@
                                     } // end else
                                     wp_reset_postdata(); // clear the query object
                                     ?>
-
                                 </div>
                             </div>
 

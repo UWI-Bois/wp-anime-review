@@ -44,7 +44,7 @@
 
                 <div class="media mg-info-author-block"> <a class="mg-author-pic" href="#"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?> </a>
                   <div class="media-body">
-                    <h4 class="media-heading"><span><?php esc_html_e('By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
+                    <h4 class="media-heading"><span><?php esc_html_e('Posted By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
                     <span class="mg-blog-date"><?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
                     <?php $tag_list = get_the_tag_list();
                     if($tag_list){ ?>
@@ -76,16 +76,16 @@
 //                    print_r($languages); // print using foreach
                     ?>
                     <div class="media mg-info-author-block">
+                        <div class="mg-wid-title"><h1>About <?php the_title(); ?></h1></div>
                         <div class="media-body">
-                            <h1 class="media-heading">About <?php the_title(); ?></h1>
-                            <h3>Author</h3>
-                            <p><?php echo $author; ?></p>
-
+                            <h2>Author</h2>
+                            <p><b><?php echo $author; ?></b></p>
+                            <hr>
 <!--                            print genres only if there are any associated-->
                             <?php
                             if($genres) {
 	                            ?>
-                                <h3>Genre(s)</h3>
+                                <h2>Genre(s)</h2>
                                 <ul>
                                 <?php
                                 foreach ($genres as $genre) { ?>
@@ -99,12 +99,13 @@
                             } // end if
                             ?>
                                 </ul>
+                            <hr>
 
 <!--                            print languages only if there are any associated-->
                             <?php
                             if($languages) {
 	                            ?>
-                                <h3>Language(s)</h3>
+                                <h2>Language(s)</h2>
                                 <ul>
                                 <?php
                                 foreach ($languages as $language) { ?>
@@ -118,19 +119,23 @@
                             } // end if
                             ?>
                                 </ul>
+                            <hr>
                         </div>
                     </div>
 
-           <div class="media mg-info-author-block">
-            <?php $newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
-            if($newsup_enable_single_post_admin_details == true) { ?>
-            <a class="mg-author-pic" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
-                <div class="media-body">
-                  <h4 class="media-heading"><?php esc_html_e('By','newsup'); ?> <a href "<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                  <p><?php the_author_meta( 'description' ); ?></p>
-                </div>
-              <?php } ?>
-            </div><?php $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+<!--           <div class="media mg-info-author-block">-->
+<!--            --><?php //$newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
+//            if($newsup_enable_single_post_admin_details == true) { ?>
+<!--            <a class="mg-author-pic" href="--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //echo get_avatar( get_the_author_meta( 'ID') , 150); ?><!--</a>-->
+<!--                <div class="media-body">-->
+<!--                  <h4 class="media-heading">--><?php //esc_html_e('Posted By','newsup'); ?><!-- <a href "--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //the_author(); ?><!--</a></h4>-->
+<!--                  <p>--><?php //the_author_meta( 'description' ); ?><!--</p>-->
+<!--                </div>-->
+<!--              --><?php //} ?>
+<!--            </div>-->
+                  <?php
+                  $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+                  $newsup_enable_related_post = false; // comment out this line to print the related post card on this single page.
                                 if($newsup_enable_related_post == true){
                             ?>
 
