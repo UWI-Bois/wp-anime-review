@@ -45,7 +45,7 @@
                 <div class="media mg-info-author-block"> <a class="mg-author-pic" href="#"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?> </a>
                   <div class="media-body">
                     <h4 class="media-heading"><span><?php esc_html_e('Posted By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                    <span class="mg-blog-date"><?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
+                    <span class="mg-blog-date">Date Posted: <?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
                     <?php $tag_list = get_the_tag_list();
                     if($tag_list){ ?>
                     <span class="newsup-tags"><a href="<?php the_permalink(); ?>"><?php the_tags('', ', ', ''); ?></a></span>
@@ -76,7 +76,12 @@
 //                    print_r($languages); // print using foreach
                     ?>
                     <div class="media mg-info-author-block">
-                        <div class="mg-wid-title"><h1>About <?php the_title(); ?></h1></div>
+                        <div class="mg-wid-title">
+                            <h1>
+                                About <b><?php the_title(); ?></b>
+<!--                                Information-->
+                            </h1>
+                        </div>
                         <div class="media-body">
                             <h2>Author</h2>
                             <p><b><?php echo $author; ?></b></p>
@@ -123,6 +128,71 @@
                         </div>
                     </div>
 
+<!--                    print associated anime reviews in another card-->
+                  <?php
+                  $reviews_query = new WP_Query(array(
+                      'posts_per_page' => -1,
+                      'post_type'=> 'anime_review',
+                      'orderby' => 'title',
+                      'order' => 'ASC',
+                      'meta_query' => array(
+                          array(
+                              'key' => 'review_anime',
+                              'compare' => 'LIKE',
+                              'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
+                          )
+                      )
+                  ));
+                  $reviews_array = get_posts(array(
+                      'posts_per_page' => -1,
+                      'post_type'=> 'anime_review',
+                      'orderby' => 'title',
+                      'order' => 'ASC',
+                      'meta_query' => array(
+                          array(
+                              'key' => 'review_anime',
+                              'compare' => 'LIKE',
+                              'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
+                          )
+                      )
+                  ));
+                  $reviews_posts = array();
+                  foreach ($reviews_array as $item) {
+                      array_push($reviews_posts, setup_postdata($item));
+                  }
+                  echo (gettype($reviews_query)) . '<br>'; //array of associated review posts
+                  echo (gettype($reviews_array)) . '<br>';
+                  echo (gettype($reviews_posts)) . '<br>';
+                  ?>
+                  <?php
+                  if($reviews_posts) { ?>
+                      <div class="media mg-info-author-block">
+                          <div class="mg-wid-title">
+                              <h1>
+                                  Reviews on <b><?php the_title(); ?></b>
+                              </h1>
+                          </div>
+                          <div class="media-body">
+                              <ul> <?php
+                                  foreach ($reviews_posts as $reviews_post) {?>
+                                    <li>
+                                        <a href="<?php the_permalink($reviews_post); ?>">
+                                            <?php the_title($reviews_post); ?>
+                                        </a>
+                                    </li>
+                          <?php
+                      } // end while ?>
+                              </ul>
+                          </div>
+                      </div>
+                      <?php
+                      wp_reset_postdata();
+                  } // end if ?>
+
+
+
+
+<!--                  author card-->
 <!--           <div class="media mg-info-author-block">-->
 <!--            --><?php //$newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
 //            if($newsup_enable_single_post_admin_details == true) { ?>
@@ -140,7 +210,7 @@
                             ?>
 
 
-
+<!--                this is for the related posts card -->
               <div class="mg-featured-slider">
                         <!--Start mg-realated-slider -->
                         <div class="mg-sec-title">
@@ -227,7 +297,7 @@
       <!--sidebar-->
           <!--col-md-3-->
             <aside class="col-md-3 col-sm-4">
-                  <?php get_sidebar();?>
+                  <?php get_sidebar(); // load the widgest on the side (meta, recent comments, etc)?>
             </aside>
           <!--/col-md-3-->
       <!--/sidebar-->
