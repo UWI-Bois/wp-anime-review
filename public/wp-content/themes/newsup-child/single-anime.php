@@ -89,6 +89,9 @@
                             <h2>Author</h2>
                             <p><b><?php echo $author; ?></b></p>
                             <hr>
+                            <h2>Release Date</h2>
+                            <p><b><?php echo $release_date; ?></b></p>
+                            <hr>
 <!--                            print genres only if there are any associated-->
                             <?php
                             if($genres) {
@@ -133,19 +136,6 @@
 
 <!--                    print associated anime reviews in another card-->
                   <?php
-                  $query_args_relational = array(
-                      'posts_per_page' => -1,
-                      'post_type'=> 'anime_review',
-                      'orderby' => 'title',
-                      'order' => 'ASC',
-                      'meta_query' => array(
-                          array(
-                              'key' => 'review_anime',
-                              'compare' => 'LIKE',
-                              'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
-                          )
-                      ),
-                  );
                   $query_all = array(
                       'posts_per_page' => -1,
                       'post_type'=> 'anime_review',
