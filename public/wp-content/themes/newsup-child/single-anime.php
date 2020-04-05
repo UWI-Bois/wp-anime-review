@@ -130,7 +130,7 @@
 
 <!--                    print associated anime reviews in another card-->
                   <?php
-                  $reviews_query = new WP_Query(array(
+                  $query_args_relational = array(
                       'posts_per_page' => -1,
                       'post_type'=> 'anime_review',
                       'orderby' => 'title',
@@ -141,31 +141,30 @@
                               'compare' => 'LIKE',
                               'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
                           )
-                      )
-                  ));
-                  $reviews_array = get_posts(array(
+                      ),
+                  );
+                  $query_all = array(
                       'posts_per_page' => -1,
-                      'post_type'=> 'anime_review',
+                      'post_type'=> 'post',
                       'orderby' => 'title',
                       'order' => 'ASC',
-                      'meta_query' => array(
-                          array(
-                              'key' => 'review_anime',
-                              'compare' => 'LIKE',
-                              'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
-                          )
-                      )
-                  ));
+                  );
+//                  $reviews_query = new WP_Query($query_args_relational);
+                  $reviews_array = get_posts($query_all);
                   $reviews_posts = array();
                   foreach ($reviews_array as $item) {
                       array_push($reviews_posts, setup_postdata($item));
                   }
-                  echo (gettype($reviews_query)) . '<br>'; //array of associated review posts
-                  echo (gettype($reviews_array)) . '<br>';
-                  echo (gettype($reviews_posts)) . '<br>';
+                  $related_reviews = array();
+                  foreach ($reviews_posts as $item) {
+                      if(get_the_ID() == get_the_ID($item)) array_push($related_reviews, $item);
+                  }
+//                  echo (gettype($reviews_query)) . '<br>'; //array of associated review posts
+//                  echo (gettype($reviews_array)) . '<br>';
+//                  echo (gettype($reviews_posts)) . '<br>';
                   ?>
                   <?php
-                  if($reviews_posts) { ?>
+                  if($related_reviews) { ?>
                       <div class="media mg-info-author-block">
                           <div class="mg-wid-title">
                               <h1>
@@ -174,10 +173,10 @@
                           </div>
                           <div class="media-body">
                               <ul> <?php
-                                  foreach ($reviews_posts as $reviews_post) {?>
+                                  foreach ($related_reviews as $review) {?>
                                     <li>
-                                        <a href="<?php the_permalink($reviews_post); ?>">
-                                            <?php the_title($reviews_post); ?>
+                                        <a href="<?php the_permalink($review); ?>">
+                                            <?php the_title($review); ?>
                                         </a>
                                     </li>
                           <?php
