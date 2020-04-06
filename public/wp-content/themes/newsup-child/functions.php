@@ -74,6 +74,10 @@
     // Add live search script
     add_action( 'init', 'enqueue_live_search' );
     function enqueue_live_search(){
+        // Enqueue jQuery
+        wp_enqueue_script("jquery");
+
+        // Enqueu live search script
         wp_enqueue_script( 'live_search', './wp-content/themes/newsup-child/js/livesearch.js', array('jquery'));
     }
 
