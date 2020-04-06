@@ -86,12 +86,15 @@
                                 )
                             ));
                             ?>
-                            <div class="media mg-info-author-block">
+                            <div style="padding: 40px" class="media mg-card-box">
+                                <div class="mg-wid-title">
+                                    <h1 class="media-heading"> <?php the_title(); ?> Anime Titles </h1>
+                                </div>
                                 <div class="media-body">
                                     <?php
                                     if($related_anime->have_posts()) {
                                         ?>
-                                        <h1 class="media-heading"> <?php the_title(); ?> Anime Titles </h1>
+
                                         <ul>
                                             <?php while($related_anime->have_posts()){ $related_anime->the_post(); ?>
                                                 <li>

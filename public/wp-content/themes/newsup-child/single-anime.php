@@ -147,24 +147,39 @@
                   ?>
                   <?php
                   if($reviews_query) { ?>
-                      <div class="media mg-info-author-block">
+                      <div style="padding: 40px" class="media mg-card-box">
                           <div class="mg-wid-title">
                               <h1>
                                   Reviews on <b><?php the_title(); ?></b>
                               </h1>
                           </div>
                           <div class="media-body">
-                              <ul class="list-group list-group-flush"><?php
+                              <ul class="list-group">
+                                  <?php
                                     while($reviews_query->have_posts()){
                                         $reviews_query->the_post();
                                         $related_anime = get_field('review_anime');
+                                        $reviews_rating = get_field('review_rating');
                                         if($this_title == get_the_title($related_anime)){
                                       ?>
-                                    <li class="list-group-item">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <h4>
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                    <?php
+                                                    if($reviews_rating) {
+                                                        ?>
+                                                        <span class="badge badge-primary badge-pill">
+                                                            Rating:
+                                                            <?php echo $reviews_rating; ?>
+                                                            / 5
+                                                        </span>
+                                                        <?php
+                                                    }// end if reviews rating
+                                                    ?>
+                                                </h4>
+                                            </li>
                                             <?php } // end if ?>
                           <?php
                       } // end loop ?>
