@@ -12,6 +12,14 @@ Text Domain: newsup
 Template: newsup
 */
 
+.search-trigger {
+    color: #FFF;
+    position: relative;
+    cursor: pointer;
+    top: 1px;
+    margin-left: 20px;
+}
+
 .search-overlay {
     overflow-y: auto;
     overflow-x: hidden;

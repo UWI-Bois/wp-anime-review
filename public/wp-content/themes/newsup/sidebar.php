@@ -11,13 +11,15 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 
 <aside id="secondary" class="widget-area" role="complementary">
-	<div class="search-overlay search-overlay--active">
+	<button type="button" class="search-trigger">Open Live Search</button>
+	<div class="search-overlay">
 		<div class="search-overlay__top">
 			<div class="container">
 				<input type="text"
 					class="search-term"
 					placeholder="Find your favourite anime"
 					id="search-term"/>
+				<i class="fa fa-window-close search-overlay__close" ariahidden="true"></i>
 			</div>
 		</div>
 	</div>

@@ -75,10 +75,10 @@
     add_action( 'init', 'enqueue_live_search' );
     function enqueue_live_search(){
         // Enqueue jQuery
-        wp_enqueue_script("jquery");
+        wp_enqueue_script('jquery');
 
         // Enqueu live search script
-        wp_enqueue_script( 'live_search', './wp-content/themes/newsup-child/js/livesearch.js', array('jquery'));
+        wp_enqueue_script( 'live_search', './wp-content/themes/newsup-child/js/livesearch.js', array('jquery'), "1.0", TRUE);
     }
 
 ?>
