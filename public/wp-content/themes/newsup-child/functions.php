@@ -3,12 +3,28 @@
 
     //=========== CUSTOM CODE FOR GROUP PROJECT =================
 
-    // Enqueue parent theme
-    // Code taken from wordpress.org
+    // Code partially taken from wordpress.org
     // Ref: https://developer.wordpress.org/themes/advanced-topics/child-themes/
     add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
     function my_theme_enqueue_styles() {
+        // Enqueue parent theme
+        //wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
         wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+        wp_style_add_data( 'newsup-style', 'rtl', 'replace' );
+        wp_enqueue_style('newsup-default', get_template_directory_uri() . '/css/colors/default.css');
+        wp_enqueue_style('font-awesome',get_template_directory_uri().'/css/font-awesome.css');
+        wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css');
+        wp_enqueue_style('smartmenus',get_template_directory_uri().'/css/jquery.smartmenus.bootstrap.css');	
+
+        // Enqueue parent scripts
+        wp_enqueue_script( 'newsup-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'));
+        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array('jquery'));
+        wp_enqueue_script('owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'));
+        wp_enqueue_script('smartmenus', get_template_directory_uri() . '/js/jquery.smartmenus.js' , array('jquery'));
+        wp_enqueue_script('smartmenus-bootstrap', get_template_directory_uri() . '/js/jquery.smartmenus.bootstrap.js' , array('jquery'));
+        wp_enqueue_script('newsup-main-js', get_template_directory_uri() . '/js/jquery.marquee.js' , array('jquery'));
+        wp_enqueue_script('newsup-main-js', get_template_directory_uri() . '/js/main.js' , array('jquery'));
     }
 
     // Remove default wordpress roles, and add custom ones

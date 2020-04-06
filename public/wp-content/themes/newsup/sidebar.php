@@ -12,7 +12,14 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 
 <aside id="secondary" class="widget-area" role="complementary">
 	<div class="search-overlay search-overlay--active">
-		hello 123
+		<div class="search-overlay__top">
+			<div class="container">
+				<input type="text"
+					class="search-term"
+					placeholder="Find your favourite anime"
+					id="search-term"/>
+			</div>
+		</div>
 	</div>
 	<div id="sidebar-right" class="mg-sidebar">
 		<?php dynamic_sidebar( 'sidebar-1' ); ?>
