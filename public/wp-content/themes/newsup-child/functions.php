@@ -7,18 +7,17 @@
     // Ref: https://developer.wordpress.org/themes/advanced-topics/child-themes/
     add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
     function my_theme_enqueue_styles() {
-        // Enqueue parent theme
-        //wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+        // Enqueue parent styles
         wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-        wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-        wp_style_add_data( 'newsup-style', 'rtl', 'replace' );
+        wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+        wp_style_add_data('newsup-style', 'rtl', 'replace');
         wp_enqueue_style('newsup-default', get_template_directory_uri() . '/css/colors/default.css');
         wp_enqueue_style('font-awesome',get_template_directory_uri().'/css/font-awesome.css');
         wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css');
         wp_enqueue_style('smartmenus',get_template_directory_uri().'/css/jquery.smartmenus.bootstrap.css');	
 
         // Enqueue parent scripts
-        wp_enqueue_script( 'newsup-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'));
+        wp_enqueue_script('newsup-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'));
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array('jquery'));
         wp_enqueue_script('owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'));
         wp_enqueue_script('smartmenus', get_template_directory_uri() . '/js/jquery.smartmenus.js' , array('jquery'));
@@ -72,10 +71,10 @@
         ) );
     }
 
+    // Add live search script
     add_action( 'init', 'enqueue_live_search' );
-
     function enqueue_live_search(){
-        wp_enqueue_script( 'live_search', './wp-content/themes/newsup-child/js/livesearch.js', NULL, '1.0', TRUE );
+        wp_enqueue_script( 'live_search', './wp-content/themes/newsup-child/js/livesearch.js', array('jquery'));
     }
 
 ?>

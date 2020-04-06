@@ -21,5 +21,4 @@
 			return false;
 		});
     });
-    var LiveSearch = new Search();
 })(jQuery);
