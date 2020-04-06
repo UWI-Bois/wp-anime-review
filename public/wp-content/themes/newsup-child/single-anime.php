@@ -154,13 +154,13 @@
                               </h1>
                           </div>
                           <div class="media-body">
-                              <ul><?php
+                              <ul class="list-group list-group-flush"><?php
                                     while($reviews_query->have_posts()){
                                         $reviews_query->the_post();
                                         $related_anime = get_field('review_anime');
                                         if($this_title == get_the_title($related_anime)){
                                       ?>
-                                    <li>
+                                    <li class="list-group-item">
                                         <a href="<?php the_permalink(); ?>">
                                             <?php the_title(); ?>
                                         </a>
