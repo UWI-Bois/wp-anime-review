@@ -88,6 +88,7 @@ Text Domain: newsup
     margin: 20px 0;
 }
 .mg-menu-full {
+	z-index: 109;
 	position: relative;
 }
 .mg-headwidget .navbar-wp {

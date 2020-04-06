@@ -1,6 +1,6 @@
 class Search{
     constructor(){
-        alert("This is a JavaScript search");
+        console.log("This is a JavaScript search. Working.");
     }
 }
 

@@ -11,3 +11,106 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Text Domain: newsup
 Template: newsup
 */
+
+.search-overlay {
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 110;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .96);
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: scale(1.09);
+            transform: scale(1.09);
+    transition: opacity .3s, visibility .3s, -webkit-transform .3s;
+    transition: opacity .3s, transform .3s, visibility .3s;
+    transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
+    box-sizing: border-box;
+}
+
+.search-overlay p {
+    padding-top: 15px;
+}
+
+.search-overlay .event-summary p {
+    padding-top: 0;
+}
+
+.search-overlay .event-summary {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+body.admin-bar .search-overlay {
+    top: 32px;
+}
+
+.search-overlay__top {
+    background-color: rgba(0, 0, 0, .12);
+}
+
+.search-overlay__icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+    color: #F95738;
+}
+
+@media (min-width: 960px) {
+    .search-overlay__icon {
+        font-size: 2.5rem;
+    }
+}
+
+.search-overlay--active {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+
+.search-overlay__section-title {
+    margin: 30px 0 1px 0;
+    font-weight: 400;
+    color: #0D3B66;
+    font-size: 2rem;
+    padding: 15px 0;
+    border-bottom: 1px solid #CCC;
+}
+
+.search-overlay__close {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    font-size: 2.1rem;
+    cursor: pointer;
+    transition: all .3s;
+    background-color: #FFF;
+    color: #F95738;
+    line-height: .7;
+}
+
+@media (min-width: 530px) {
+    .search-overlay__close {
+        top: 18px;
+        font-size: 2.1rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .search-overlay__close {
+        top: 26px;
+        font-size: 2.8rem;
+    }
+}
+
+.search-overlay__close:hover {
+    opacity: 1;
+}
+
+.search-overlay .one-half {
+    padding-bottom: 0;
+}
