@@ -54,16 +54,16 @@
                                         $meta_value = get_field('anime_genres');
                                         foreach ($meta_value as $val):
                                           ?>
-                                          <a class="newsup-categories category-color-1" href="<?php get_permalink( $val ) ?>" alt="">
-                                            <?php esc_html( $val->post_title ); ?>
+                                          <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
+                                            <?php echo esc_html( $val->post_title ); ?>
                                           </a>
                                           <?php
-                                        endforeach;
+                                        endforeach; // for each genre on anime
                                       elseif ($post_type == 'anime_review'):
                                         $meta_value = get_field('review_related_anime');
                                         ?>
-                                        <a class="newsup-categories category-color-1" href="<?php get_permalink( $meta_value->guid ) ?>" alt="">
-                                          <?php esc_html( $meta_value->post_title ); ?>
+                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
+                                          <?php echo esc_html( $meta_value->post_title ); ?>
                                         </a>
                                         <?php
                                       endif;
