@@ -60,11 +60,10 @@
                                           <?php
                                         endforeach;
                                       elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_anime');
-                                        echo print_r($meta_value);
+                                        $meta_value = get_field('review_related_anime');
                                         ?>
-                                        <a class="newsup-categories category-color-1" href="<?php get_permalink( $meta_value ) ?>" alt="">
-                                          <?php esc_html( $meta_value ); ?>
+                                        <a class="newsup-categories category-color-1" href="<?php get_permalink( $meta_value->guid ) ?>" alt="">
+                                          <?php esc_html( $meta_value->post_title ); ?>
                                         </a>
                                         <?php
                                       endif;
