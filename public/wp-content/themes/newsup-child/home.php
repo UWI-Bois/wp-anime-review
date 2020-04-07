@@ -20,7 +20,7 @@
         <div class="mg-posts-sec mg-posts-modul-6">
             <div class="mg-posts-sec-inner">
                 <?php
-                $all_custom_posts = new WP_Query(array('post_type' => array('anime', 'review', 'post')));
+                $all_custom_posts = new WP_Query(array('post_type' => array('anime', 'anime_review')));
                 while ($all_custom_posts->have_posts()):
                   $all_custom_posts->the_post();
                   global $post;
@@ -45,7 +45,30 @@
                           <div class="list_content col">
                               <div class="mg-sec-top-post">
                                   <div class="mg-blog-category">
-                                      <?php newsup_post_categories(); ?>
+                                      <?php
+                                      // This gets all the genres of this post and then
+                                      // embeds them into a pill component to display as
+                                      // the related genres of this post preview.
+                                      $post_type = get_post_type( $post );
+                                      if ($post_type == 'anime'):
+                                        $meta_value = get_field('anime_genres');
+                                        foreach ($meta_value as $val):
+                                          ?>
+                                          <a class="newsup-categories category-color-1" href="<?php get_permalink( $val ) ?>" alt="">
+                                            <?php esc_html( $val->post_title ); ?>
+                                          </a>
+                                          <?php
+                                        endforeach;
+                                      elseif ($post_type == 'anime_review'):
+                                        $meta_value = get_field('review_anime');
+                                        echo print_r($meta_value);
+                                        ?>
+                                        <a class="newsup-categories category-color-1" href="<?php get_permalink( $meta_value ) ?>" alt="">
+                                          <?php esc_html( $meta_value ); ?>
+                                        </a>
+                                        <?php
+                                      endif;
+                                      ?>
                                   </div>
 
                                   <h1 class="entry-title title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
