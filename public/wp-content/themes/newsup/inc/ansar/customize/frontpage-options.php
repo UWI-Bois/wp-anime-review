@@ -18,7 +18,7 @@ $wp_customize->add_setting('remove_header_image_overlay',
         array(
             'default'           => $newsup_default['remove_header_image_overlay'],
             'capability'        => 'edit_theme_options',
-            'sanitize_callback' => 'newsiup_sanitize_checkbox',
+            'sanitize_callback' => 'newsup_sanitize_checkbox',
         )
     );
 
