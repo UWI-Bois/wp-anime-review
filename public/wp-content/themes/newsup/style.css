@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 2.3
+Version: 2.5
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -396,7 +396,7 @@ input[type="checkbox"] + label {
     box-shadow: inherit;
 }
 img.alignnone {
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 }
 img.size-large {
@@ -1957,9 +1957,11 @@ footer .mg-widget .calendar_wrap table tfoot tr td#next {
 footer .mg-widget .textwidget select {
 	width: 100%;
 }
-footer .mg-widget .textwidget select, footer .mg-widget .textwidget img {
+footer .mg-widget .textwidget select {
 	width: 100%;
 }
+footer .mg-widget .textwidget img {max-width: 100%;}
+
 footer .mg-widget .form-control {
 	background: rgba(0,0,0,0);
 }
@@ -1990,7 +1992,6 @@ footer .mg-footer-bottom-area .divide-line {
 }
 footer .mg-footer-bottom-area .custom-logo {
 	width: 160px;
-	height: 50px;
 }
 footer .mg-footer-bottom-area .btn-default > .btn {
 	padding: 10px 30px;
