@@ -62,37 +62,34 @@ if($newsup_remove_header_image_overlay == true){ ?>
                           <div class="list_content col">
                               <div class="mg-sec-top-post">
                                   <div class="mg-blog-category">
+
                                       <?php
                                       // This gets all the anime related to this genre,
                                       // not all but at least 3 - 5, randomly.
 
-                                      $some_animes = new WP_Query(array(
+                                      $anime_posts = new WP_Query(array(
                                         'post_type' => 'anime',
-                                        'posts_per_page' => 4,
-                                        'meta_query' => array(
+                                        'posts_per_page' => 5,
+                                        'meta_query' => array (
                                           array(
-
-                                          ), // meta_query[0]: anime genre matches this genre
-                                        ),
+                                            'key' => 'anime_genres',
+                                            'compare' => 'LIKE',
+                                            'value' => '"'.get_the_id().'"',
+                                          ), // meta_query[0]: anime with anime_genre matching this
+                                        )
                                       ));
-                                      $post_type = get_post_type( $post );
-                                      if ($post_type == 'anime'):
-                                        $meta_value = get_field('anime_genres');
-                                        foreach ($meta_value as $val):
-                                          ?>
-                                          <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                            <?php echo esc_html( $val->post_title ); ?>
-                                          </a>
-                                          <?php
-                                        endforeach; // for each genre on anime
-                                      elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_related_anime');
+
+                                      while ($anime_posts->have_posts()):
+                                        $anime_posts->the_post();
+                                        global $post;
+
                                         ?>
-                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
-                                          <?php echo esc_html( $meta_value->post_title ); ?>
+                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink(  )) ?>" alt="">
+                                          <?php echo esc_html( the_title(  ) ); ?>
                                         </a>
                                         <?php
-                                      endif;
+                                      endwhile;
+                                      wp_reset_postdata();
                                       ?>
                                   </div>
 
