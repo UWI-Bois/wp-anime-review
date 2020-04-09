@@ -114,6 +114,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                   </article>
                   <?php
                 endwhile;
+                wp_reset_postdata();
                 ?>
                 <div class="col-md-12 text-center">
                     <?php //Previous / next page navigation

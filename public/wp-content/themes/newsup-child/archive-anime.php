@@ -83,7 +83,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                             <?php echo esc_html( $val->post_title ); ?>
                                           </a>
                                           <?php
-                                        endforeach; // for each genre on 
+                                        endforeach; // for each genre on
                                       ?>
                                   </div>
 
@@ -108,6 +108,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                   </article>
                   <?php
                 endwhile;
+                wp_reset_postdata();
                 ?>
                 <div class="col-md-12 text-center">
                     <?php //Previous / next page navigation
