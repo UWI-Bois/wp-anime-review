@@ -76,7 +76,6 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                         ),
                                       ));
                                       $post_type = get_post_type( $post );
-                                      if ($post_type == 'anime'):
                                         $meta_value = get_field('anime_genres');
                                         foreach ($meta_value as $val):
                                           ?>
@@ -84,15 +83,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                             <?php echo esc_html( $val->post_title ); ?>
                                           </a>
                                           <?php
-                                        endforeach; // for each genre on anime
-                                      elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_related_anime');
-                                        ?>
-                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
-                                          <?php echo esc_html( $meta_value->post_title ); ?>
-                                        </a>
-                                        <?php
-                                      endif;
+                                        endforeach; // for each genre on 
                                       ?>
                                   </div>
 
