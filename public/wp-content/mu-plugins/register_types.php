@@ -9,6 +9,7 @@ function anime_post_types () {
   register_post_type('anime',
     array(
         'public' => true,
+        'has_archive' => true,
         'supports' => array('title', 'editor', 'excerpt'),
         'labels' => array(
           'name' => "Animes",
@@ -25,6 +26,7 @@ function anime_post_types () {
   register_post_type('genre',
     array(
       'public' => true,
+      'has_archive' => true,
       'supports' => array('title', 'editor', 'excerpt'),
       'labels' => array (
         'name' => "Genres",
@@ -41,6 +43,7 @@ function anime_post_types () {
   register_post_type('anime_review',
     array(
         'public' => true,
+        'has_archive' => true,
         'supports' => array('title', 'editor', 'excerpt', 'comments'),
         'labels' => array(
           'name' => "Anime Reviews",
