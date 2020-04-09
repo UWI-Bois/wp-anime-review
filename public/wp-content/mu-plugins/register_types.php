@@ -19,7 +19,7 @@ function anime_post_types () {
           'singular_name' => 'Anime'
         ),
         'description' => "Collection of Japanese film, television and comic adaptations.",
-        'menu_icon' => 'dashicons-images-alt'
+        'menu_icon' => 'dashicons-images-alt',
     )
   );
 
@@ -36,7 +36,9 @@ function anime_post_types () {
         'singular_name' => 'Genre'
       ),
       'description' => "Describes the nature of the story telling and type of plot of some creative work.",
-      'menu_icon' => 'dashicons-editor-kitchensink'
+      'menu_icon' => 'dashicons-editor-kitchensink',
+      'rewrite' => array('slug' => 'genres'),
+
     )
   );
 
@@ -53,7 +55,9 @@ function anime_post_types () {
           'singular_name' => 'Anime Review'
         ),
         'description' => "Collection of Japanese film, television and comic adaptations.",
-        'menu_icon' => 'dashicons-format-quote'
+        'menu_icon' => 'dashicons-format-quote',
+        'rewrite' => array('slug' => 'reviews'),
+
     )
   );
 }
