@@ -3,7 +3,6 @@
 ============================== -->
 <?php get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<?php get_template_part('index','banner'); ?>
 <!-- =========================
      Page Content Section      
 ============================== -->
@@ -62,7 +61,9 @@
                } }?>
               <article class="small single">
                 <?php the_content(); ?>
+                <?php newsup_edit_link(); ?>
               </article>
+
             </div>
 		      <?php } ?>
 

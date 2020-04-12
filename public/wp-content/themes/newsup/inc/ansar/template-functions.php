@@ -193,4 +193,54 @@ function newsup_get_freatured_image_url($post_id, $size = 'newsup-featured')
 
     return $url;
 }
+
+if (!function_exists('newsup_archive_page_title')) :
+        
+        function newsup_archive_page_title($title)
+        {
+            if (is_category()) {
+                $title = single_cat_title('', false);
+            } elseif (is_tag()) {
+                $title = single_tag_title('', false);
+            } elseif (is_author()) {
+                $title =  get_the_author();
+            } elseif (is_post_type_archive()) {
+                $title = post_type_archive_title('', false);
+            } elseif (is_tax()) {
+                $title = single_term_title('', false);
+            }
+            
+            return $title;
+        }
+    
+    endif;
+    add_filter('get_the_archive_title', 'newsup_archive_page_title');
+
+
+if (!function_exists('newsup_edit_link')) :
+
+    function newsup_edit_link($view = 'default')
+    {
+        global $post;
+        if (is_single()) {
+            edit_post_link(
+                sprintf(
+                    wp_kses(
+                    /* translators: %s: Name of current post. Only visible to screen readers */
+                        __('Edit <span class="screen-reader-text">%s</span>', 'newsup'),
+                        array(
+                            'span' => array(
+                                'class' => array(),
+                            ),
+                        )
+                    ),
+                    get_the_title()
+                ),
+                '<span class="edit-link">',
+                '</span>'
+            );
+        }
+
+    } 
+endif;
 ?>
