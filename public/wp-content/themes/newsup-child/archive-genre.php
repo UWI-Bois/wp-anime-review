@@ -10,7 +10,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
       <div class="row">
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
-            <h1>Blog</h1>
+            <h1><?php the_archive_title(  ); ?></h1>
           </div>
         </div>
       </div>
@@ -39,10 +39,8 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="mg-posts-sec mg-posts-modul-6">
             <div class="mg-posts-sec-inner">
                 <?php
-                $all_custom_posts = new WP_Query(array('post_type' => array('anime', 'anime_review')));
-                while ($all_custom_posts->have_posts()):
-                  $all_custom_posts->the_post();
-                  global $post;
+                while (have_posts()):
+                  the_post();
                   ?>
                   <article class="mg-posts-sec-post">
                       <div class="standard_post">
@@ -64,28 +62,34 @@ if($newsup_remove_header_image_overlay == true){ ?>
                           <div class="list_content col">
                               <div class="mg-sec-top-post">
                                   <div class="mg-blog-category">
+
                                       <?php
-                                      // This gets all the genres of this post and then
-                                      // embeds them into a pill component to display as
-                                      // the related genres of this post preview.
-                                      $post_type = get_post_type( $post );
-                                      if ($post_type == 'anime'):
-                                        $meta_value = get_field('anime_genres');
-                                        foreach ($meta_value as $val):
-                                          ?>
-                                          <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                            <?php echo esc_html( $val->post_title ); ?>
-                                          </a>
-                                          <?php
-                                        endforeach; // for each genre on anime
-                                      elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_related_anime');
+                                      // This gets all the anime related to this genre,
+                                      // not all but at least 3 - 5, randomly.
+
+                                      $anime_posts = new WP_Query(array(
+                                        'post_type' => 'anime',
+                                        'posts_per_page' => 5,
+                                        'meta_query' => array (
+                                          array(
+                                            'key' => 'anime_genres',
+                                            'compare' => 'LIKE',
+                                            'value' => '"'.get_the_id().'"',
+                                          ), // meta_query[0]: anime with anime_genre matching this
+                                        )
+                                      ));
+
+                                      while ($anime_posts->have_posts()):
+                                        $anime_posts->the_post();
+                                        global $post;
+
                                         ?>
-                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
-                                          <?php echo esc_html( $meta_value->post_title ); ?>
+                                        <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink(  )) ?>" alt="">
+                                          <?php echo esc_html( the_title(  ) ); ?>
                                         </a>
                                         <?php
-                                      endif;
+                                      endwhile;
+                                      wp_reset_postdata();
                                       ?>
                                   </div>
 
@@ -110,6 +114,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                   </article>
                   <?php
                 endwhile;
+                wp_reset_postdata();
                 ?>
                 <div class="col-md-12 text-center">
                     <?php //Previous / next page navigation
