@@ -28,3 +28,7 @@ node_modules/
 
 # ignore idea folder
 .idea/
+
+public/wp-content/cache/
+public/wp-content/plugins/
+public/wp-content/w3tc-config/
