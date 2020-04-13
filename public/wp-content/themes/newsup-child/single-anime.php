@@ -92,6 +92,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
 <!--                    list genres and anime information here-->
                     <?php
                     $genres = get_field('anime_genres'); // relationship (other post type)
+//                    var_dump($genres); // array of wp post objects
                     $author = get_field('anime_author'); // text area
                     $release_date = get_field('anime_release_date'); // date picker
                     $languages = get_field('anime_languages'); // checkbox
