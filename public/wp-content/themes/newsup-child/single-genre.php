@@ -26,7 +26,6 @@ if($newsup_remove_header_image_overlay == true){ ?>
 <!-- =========================
      Page Content Section
 ============================== -->
-<!--<p>single-anime.php -> in child dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">
@@ -135,20 +134,6 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                 </div>
                             </div>
 
-
-
-
-                            <!--                  author card-->
-                            <!--           <div class="media mg-info-author-block">-->
-                            <!--            --><?php //$newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
-//            if($newsup_enable_single_post_admin_details == true) { ?>
-                            <!--            <a class="mg-author-pic" href="--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //echo get_avatar( get_the_author_meta( 'ID') , 150); ?><!--</a>-->
-                            <!--                <div class="media-body">-->
-                            <!--                  <h4 class="media-heading">--><?php //esc_html_e('Posted By','newsup'); ?><!-- <a href "--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //the_author(); ?><!--</a></h4>-->
-                            <!--                  <p>--><?php //the_author_meta( 'description' ); ?><!--</p>-->
-                            <!--                </div>-->
-                            <!--              --><?php //} ?>
-                            <!--            </div>-->
                             <?php
                             $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
                             $newsup_enable_related_post = false; // comment out this line to print the related post card on this single page.
