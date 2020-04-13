@@ -88,10 +88,10 @@
                         </div>
                         <div class="media-body">
                             <h2>Author</h2>
-                            <p><b><?php echo $author; ?></b></p>
+                            <p><b><?php if($author) echo $author; ?></b></p>
                             <hr>
                             <h2>Release Date</h2>
-                            <p><b><?php echo $release_date; ?></b></p>
+                            <p><b><?php if($release_date) echo $release_date; ?></b></p>
                             <hr>
 <!--                            print genres only if there are any associated-->
                             <?php
@@ -138,9 +138,10 @@
 <!--                    print associated anime reviews in another card-->
                   <?php
                   $query_all = array(
-                      'posts_per_page' => -1,
+                      'posts_per_page' => 15,
                       'post_type'=> 'anime_review',
-                      'orderby' => 'title',
+                      'orderby' => 'rand',
+//                      'orderby' => 'title',
                       'order' => 'ASC'
                   );
                   $reviews_query = new WP_Query($query_all);
@@ -150,7 +151,9 @@
                       <div style="padding: 40px" class="media mg-card-box">
                           <div class="mg-wid-title">
                               <h1>
-                                  Reviews on <b><?php the_title(); ?></b>
+                                  Some random
+                                  <b><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></b>
+                                  reviews
                               </h1>
                           </div>
                           <div class="media-body">

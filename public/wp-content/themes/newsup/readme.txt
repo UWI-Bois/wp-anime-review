@@ -2,10 +2,10 @@
 Contributors: Themeansar
 Author: Themeansar
 Requires at least: WordPress 4.7
-Tested up to: WordPress 5.3.2
+Tested up to: WordPress 5.4
 Requires PHP: 5.6
 Stable tag: 0.3
-Version: 2.3
+Version: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -150,3 +150,16 @@ License: CC0 Public Domain
 
 = Version 2.3
 * Fixed max-height title issue.
+
+= Version 2.4
+* Fixed textwidth img and footer logo issue.
+* Check WordPress 5.4 Compability
+
+= Version 2.5
+* Fixed sanitize issue.
+
+= Version 2.6
+* Added Edit link and fix archive page title issue.
+
+= Version 2.7
+* Fix Page title issue.
