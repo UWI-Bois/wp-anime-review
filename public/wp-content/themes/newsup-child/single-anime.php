@@ -3,7 +3,26 @@
 ============================== -->
 <?php get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<?php get_template_part('index','banner'); ?>
+<div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
+<?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
+if($newsup_remove_header_image_overlay == true){ ?>
+  <div class="overlay">
+<?php } ?>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+			    <div class="mg-breadcrumb-title">
+            <h1><?php the_title(); ?></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
+if($newsup_remove_header_image_overlay == true){ ?>
+  </div>
+<?php } ?>
+</div>
+<div class="clearfix"></div>
 <!-- =========================
      Page Content Section
 ============================== -->

@@ -3,26 +3,7 @@
 ============================== -->
 <?php get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
-<?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  <div class="overlay">
-<?php } ?>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-			    <div class="mg-breadcrumb-title">
-            <h1><?php the_title(); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  </div>
-<?php } ?>
-</div>
-<div class="clearfix"></div>
+<?php get_template_part('index','banner'); ?>
 <!-- =========================
      Page Content Section
 ============================== -->
@@ -84,55 +65,128 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                             echo '</a>';
                                         } }?>
                                     <article class="small single">
+<!--                                        show the associated rating-->
                                         <?php the_content(); ?>
+                                        <?php
+                                        $anime_po = get_field('review_anime'); // https://www.advancedcustomfields.com/resources/post-object/
+                                        $rating = get_field('review_rating');
+                                        // some global variables to grab any data we need about the associated anime post
+                                        $anime_po_id = null;
+                                        $anime_po_title = null;
+                                        $anime_po_permalink = null;
+                                        if($anime_po){
+                                            $post = $anime_po;
+                                            setup_postdata($post);
+                                            global $anime_po_id;
+                                            $anime_po_id = get_the_ID();
+                                            $anime_po_title = get_the_title();
+                                            $anime_po_permalink = get_the_permalink();
+                                            wp_reset_postdata(); // important, if omitted, the rest of the post methods will be related to the anime post object (eg, the_title() -> Bleach)
+                                        }
+                                        // some debugging
+                                        //                            print_r($anime_po_title);
+                                        //                            print_r($anime_po_id);
+                                        //                            print_r($anime_po);
+                                        ?>
+                                        <hr>
+                                        <hr>
+                                        <h4>Anime being reviewed: <a href="<?php echo $anime_po_permalink; ?>"><?php echo $anime_po_title ?></a> </h4>
+                                        <hr>
+                                        <?php
+                                        if($rating){ ?>
+                                            <h4>
+                                                <a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a>
+                                                Rated it :
+                                                <?php echo $rating; ?> / 5
+                                            </h4>
+                                            <?
+                                        }// end if
+                                        else { ?>
+                                            <h4>No rating provided :(</h4>
+                                            <?php
+                                        } // end else
+                                        ?>
                                     </article>
                                 </div>
                             <?php } ?>
 
-                            <!--                    list genres and anime information here-->
                             <?php
-                            $related_anime = new WP_Query(array(
-                                'posts_per_page' => -1,
-                                'post_type'=> 'anime',
-                                'orderby' => 'title',
-                                'order' => 'ASC',
-                                'meta_query' => array(
-                                    array(
-                                        'key' => 'anime_genres',
-                                        'compare' => 'LIKE',
-                                        'value' => '"' . get_the_ID() . '"' // ensure we compare strings not ints
-                                    )
-                                )
-                            ));
+                            // query for more queries about this anime
+                            // grab all queries
+	                        $query_all_reviews = array(
+		                        'posts_per_page' => 10,
+		                        'post_type'=> 'anime_review',
+		                        'orderby' => 'rand',
+		                        'order' => 'ASC'
+	                        );
+                            $reviews = new WP_Query($query_all_reviews);
                             ?>
                             <div style="padding: 40px" class="media mg-card-box">
                                 <div class="mg-wid-title">
-                                    <h1 class="media-heading"> <?php the_title(); ?> Anime Titles </h1>
+                                    <h1>
+                                        More
+                                        <a href="<?php echo $anime_po_permalink; ?>"><?php echo $anime_po_title ?></a>
+                                        Reviews
+                                    </h1>
                                 </div>
-                                <div class="media-body">
-                                    <?php
-                                    if($related_anime->have_posts()) {
-                                        ?>
 
-                                        <ul>
-                                            <?php while($related_anime->have_posts()){ $related_anime->the_post(); ?>
-                                                <li>
-                                                    <a href="<?php the_permalink(); ?>">
-                                                        <p><?php the_title(); ?></p>
-                                                    </a>
-                                                </li>
-                                            <?php } // end while ?>
-                                        </ul>
-
-                                        <?php
-                                    } // end if
-                                    else { ?>
-                                        <h1 class="media-heading"> No <?php the_title(); ?> Titles </h1>
-                                        <?php
-                                    } // end else
-                                    wp_reset_postdata(); // clear the query object
+                                <?php
+                                if($reviews) {
                                     ?>
-                                </div>
+                                    <div class="media-body">
+                                        <ul class="list-group">
+                                        <?php
+                                        while ($reviews->have_posts()) {
+                                            $reviews->the_post();
+                                            $reviews_anime = get_field('review_anime');
+                                            $reviews_rating = get_field('review_rating');
+                                            $reviews_anime_id = $reviews_anime->ID; // works
+                                            $reviews_anime_title = $reviews_anime->post_title; // works
+
+                                            if($this_id != get_the_ID()) {
+                                                // debug stuff, comment out before pushing
+//                                                echo '$reviews_anime: <br>';
+//                                                print_r($reviews_anime);
+//                                                echo (
+//                                                    '<br> <br>'
+//                                                    . $this_id . ' = ' . 'thisid' . '<br>'
+//                                                    . $anime_po_id . ' = ' . '$anime_po_id' . '<br>'
+//                                                    . $reviews_anime_id . ' = ' . '$reviews_anime_id'  . '<br>'
+//                                                    . $reviews_anime_title  . ' = $reviews_anime_title' . '<br>'
+//                                                    . $anime_po_title  . ' = $anime_po_title' . '<br>'
+//                                                );
+                                                if($anime_po_id == $reviews_anime_id) {
+                                                    ?>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <h4>
+                                                            <a href="<?php the_permalink(); ?>">
+                                                                <?php the_title(); ?>
+                                                            </a>
+                                                            <?php
+                                                            if($reviews_rating) {
+                                                                ?>
+                                                                <span class="badge badge-warning badge-pill">
+                                                                    Rating:
+                                                                    <?php echo $reviews_rating; ?>
+                                                                    / 5
+                                                                </span>
+                                                                <?php
+                                                            }// end if reviews rating
+                                                                ?>
+                                                        </h4>
+                                                    </li>
+                                                    <?php
+                                                } // end if anime id
+                                            } // end if this review id
+                                        } // end while have posts
+                                        ?>
+                                        </ul>
+                                    </div>
+                                    <?php
+                                    wp_reset_postdata();
+                                } // end if reviews query
+                                ?>
+
                             </div>
 
 

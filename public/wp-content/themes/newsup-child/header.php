@@ -145,7 +145,7 @@ if ($show_flash_news_section):
  <!-- ======================= END BANNER ====================== -->
  <!-- =================== FEATURE CAROUSEL ==================== -->
 <?php
-if (is_front_page() || is_home()) {
+if (is_front_page()) {
 $newsup_enable_main_slider = newsup_get_option('show_main_news_section');
 $select_vertical_slider_news_category = newsup_get_option('select_vertical_slider_news_category');
 $vertical_slider_number_of_slides = newsup_get_option('vertical_slider_number_of_slides');

@@ -29,10 +29,6 @@ node_modules/
 # ignore idea folder
 .idea/
 
-# ???? consider tracking the entire plugins directory
-public/wp-content/cache/*
-public/wp-content/plugins/*
-
-public/wp-content/plugins/sg-cachepress/*
-public/wp-content/plugins/wordpress-starter/*
-public/wp-content/w3tc-config/*
+public/wp-content/cache/
+public/wp-content/plugins/
+public/wp-content/w3tc-config/

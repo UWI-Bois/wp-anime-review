@@ -9,6 +9,7 @@ function anime_post_types () {
   register_post_type('anime',
     array(
         'public' => true,
+        'has_archive' => true,
         'supports' => array('title', 'editor', 'excerpt'),
         'labels' => array(
           'name' => "Animes",
@@ -18,13 +19,14 @@ function anime_post_types () {
           'singular_name' => 'Anime'
         ),
         'description' => "Collection of Japanese film, television and comic adaptations.",
-        'menu_icon' => 'dashicons-images-alt'
+        'menu_icon' => 'dashicons-images-alt',
     )
   );
 
   register_post_type('genre',
     array(
       'public' => true,
+      'has_archive' => true,
       'supports' => array('title', 'editor', 'excerpt'),
       'labels' => array (
         'name' => "Genres",
@@ -34,14 +36,17 @@ function anime_post_types () {
         'singular_name' => 'Genre'
       ),
       'description' => "Describes the nature of the story telling and type of plot of some creative work.",
-      'menu_icon' => 'dashicons-editor-kitchensink'
+      'menu_icon' => 'dashicons-editor-kitchensink',
+      'rewrite' => array('slug' => 'genres'),
+
     )
   );
 
   register_post_type('anime_review',
     array(
         'public' => true,
-        'supports' => array('title', 'editor', 'excerpt'),
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'comments'),
         'labels' => array(
           'name' => "Anime Reviews",
           'add_new_item' => 'Add New Anime Review',
@@ -50,7 +55,9 @@ function anime_post_types () {
           'singular_name' => 'Anime Review'
         ),
         'description' => "Collection of Japanese film, television and comic adaptations.",
-        'menu_icon' => 'dashicons-format-quote'
+        'menu_icon' => 'dashicons-format-quote',
+        'rewrite' => array('slug' => 'reviews'),
+
     )
   );
 }
