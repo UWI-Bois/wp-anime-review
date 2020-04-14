@@ -3,26 +3,6 @@
 ============================== -->
 <?php get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
-<?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  <div class="overlay">
-<?php } ?>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-			    <div class="mg-breadcrumb-title">
-            <h1><?php the_title(); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  </div>
-<?php } ?>
-</div>
-<div class="clearfix"></div>
 <!-- =========================
      Page Content Section
 ============================== -->
@@ -54,26 +34,18 @@ if($newsup_remove_header_image_overlay == true){ ?>
 		      <?php if(have_posts())
 		        {
 		      while(have_posts()) { the_post(); ?>
-            <div class="mg-blog-post-box">
+            <div class="media mg-info-author-block">
               <div class="mg-header">
                 <div class="mg-blog-category">
                       <?php newsup_post_categories(); ?>
                 </div>
-                <h1 class="title single"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','newsup'),'after'  => '') ); ?>">
-                  <?php the_title(); ?></a>
-                </h1>
-
-                <div class="media mg-info-author-block"> <a class="mg-author-pic" href="#"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><span><?php esc_html_e('Posted By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                    <span class="mg-blog-date">Date Posted: <?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
-                    <?php $tag_list = get_the_tag_list();
-                    if($tag_list){ ?>
-                    <span class="newsup-tags"><a href="<?php the_permalink(); ?>"><?php the_tags('', ', ', ''); ?></a></span>
-                  <?php } ?>
-                  </div>
-                </div>
               </div>
+                <div class="mg-wid-title">
+                    <h1>
+                        <b><?php the_title(); ?></b>
+                    </h1>
+                </div>
+
               <?php
               $single_show_featured_image = esc_attr(get_theme_mod('single_show_featured_image','true'));
               if($single_show_featured_image == true) {
@@ -82,7 +54,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
               the_post_thumbnail( '', array( 'class'=>'img-responsive' ) );
               echo '</a>';
                } }?>
-              <article class="small single">
+              <article>
                 <?php the_content(); ?>
               </article>
             </div>
@@ -102,12 +74,18 @@ if($newsup_remove_header_image_overlay == true){ ?>
                             </h1>
                         </div>
                         <div class="media-body">
+                            <?php if ($author): ?>
                             <h2>Author</h2>
-                            <p><b><?php if($author) echo $author; ?></b></p>
+                            <p><b><?php echo $author; ?></b></p>
                             <hr>
+                            <?php endif; ?>
+
+                            <?php if($release_date): ?>
                             <h2>Release Date</h2>
-                            <p><b><?php if($release_date) echo $release_date; ?></b></p>
+                            <p><b><?php echo $release_date; ?></b></p>
                             <hr>
+                            <?php endif; ?>
+
 <!--                            print genres only if there are any associated-->
                             <?php
                             if($genres) {
