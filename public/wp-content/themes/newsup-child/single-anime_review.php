@@ -119,7 +119,7 @@
                             <div style="padding: 40px" class="media mg-card-box">
                                 <div class="mg-wid-title">
                                     <h1>
-                                        More
+                                        Some Random
                                         <a href="<?php echo $anime_po_permalink; ?>"><?php echo $anime_po_title ?></a>
                                         Reviews
                                     </h1>
@@ -170,6 +170,12 @@
                                     wp_reset_postdata();
                                 } // end if reviews query
                                 ?>
+
+                                <button type="button" class="btn btn-primary" style="font-size: large;">
+                                    <a style="color: white" href="<?php echo get_post_type_archive_link('anime_review') ?>">
+                                        View All Reviews
+                                    </a>
+                                </button>
 
                             </div>
 
@@ -255,7 +261,6 @@
                                         wp_reset_postdata();
                                         ?>
                                     </div>
-
                                 </div>
                                 <!--End mg-realated-slider -->
                             <?php } }

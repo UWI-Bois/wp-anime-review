@@ -6,6 +6,11 @@
 <!-- =========================
      Page Content Section
 ============================== -->
+<style>
+    h2{
+        padding-bottom: 15px;
+    }
+</style>
 <main id="content">
     <!--container-->
     <div class="container-fluid">
@@ -54,7 +59,7 @@
               the_post_thumbnail( '', array( 'class'=>'img-responsive' ) );
               echo '</a>';
                } }?>
-              <article>
+              <article style="font-size: 20px;">
                 <?php the_content(); ?>
               </article>
             </div>
@@ -75,27 +80,27 @@
                         </div>
                         <div class="media-body">
                             <?php if ($author): ?>
-                            <h2>Author</h2>
-                            <p><b><?php echo $author; ?></b></p>
+                            <u><h2>Author</h2></u>
+                            <p style="font-size: large;"><b><?php echo $author; ?></b></p>
                             <hr>
                             <?php endif; ?>
 
                             <?php if($release_date): ?>
-                            <h2>Release Date</h2>
-                            <p><b><?php echo $release_date; ?></b></p>
+                            <u><h2>Release Date</h2></u>
+                            <p style="font-size: large;"><b><?php echo $release_date; ?></b></p>
                             <hr>
                             <?php endif; ?>
 
 <!--                            print genres only if there are any associated-->
                             <?php
-                            if($genres) {
-	                            ?>
-                                <h2>Genre(s)</h2>
+                            if($genres) { ?>
+                            <u><h2>Genre(s)</h2></u>
+                            <div class="media-body">
                                 <ul>
                                 <?php
                                 foreach ($genres as $genre) { ?>
                                     <li>
-                                        <a href="<?php echo get_the_permalink($genre); ?>">
+                                        <a style="font-size: 20px;" href="<?php echo get_the_permalink($genre); ?>">
                                             <?php echo get_the_title($genre); ?>
                                         </a>
                                     </li>
@@ -105,17 +110,19 @@
                             ?>
                                 </ul>
                             <hr>
+                            </div>
+
 
 <!--                            print languages only if there are any associated-->
                             <?php
                             if($languages) {
 	                            ?>
-                                <h2>Language(s)</h2>
+                                <u><h2>Language(s)</h2></u>
                                 <ul>
                                 <?php
                                 foreach ($languages as $language) { ?>
                                     <li>
-                                        <a href="<?php echo get_the_permalink($language); ?>">
+                                        <a style="font-size: 20px;" href="<?php echo get_the_permalink($language); ?>">
                                             <?php echo $language; ?>
                                         </a>
                                     </li>
@@ -159,7 +166,7 @@
                                       ?>
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <h4>
-                                                    <a href="<?php the_permalink(); ?>">
+                                                    <a style="font-size: 20px;" href="<?php the_permalink(); ?>">
                                                         <?php the_title(); ?>
                                                     </a>
                                                     <?php
@@ -179,6 +186,11 @@
                           <?php
                       } // end loop ?>
                               </ul>
+                              <button id="archive-btn" type="button" class="btn btn-primary">
+                                  <a style="color: white" href="<?php echo get_post_type_archive_link('anime_review') ?>">
+                                      All Reviews
+                                  </a>
+                              </button>
                           </div>
                       </div>
                       <?php
