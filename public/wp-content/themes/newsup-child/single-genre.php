@@ -85,7 +85,7 @@
                                         <ul style="font-size: large;">
                                             <?php while($related_anime->have_posts()){ $related_anime->the_post(); ?>
                                                 <li>
-                                                    <a href="<?php the_permalink(); ?>">
+                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>#content">
                                                         <p><?php the_title(); ?></p>
                                                     </a>
                                                 </li>
@@ -162,7 +162,7 @@
                                                             if($newsup_enable_single_post_category == true){ ?>
                                                                 <div class="mg-blog-category"> <?php newsup_post_categories(); ?>
                                                                 </div> <?php } ?>
-                                                            <h1 class="title"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
+                                                            <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
                                                                     <?php the_title(); ?></a>
                                                             </h1>
                                                             <div class="mg-blog-meta">

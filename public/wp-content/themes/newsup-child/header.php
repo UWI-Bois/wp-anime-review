@@ -125,7 +125,7 @@ if ($show_flash_news_section):
                 if ($all_posts->have_posts()) :
                     while ($all_posts->have_posts()) : $all_posts->the_post();
                         ?>
-                        <a href="<?php the_permalink(); ?>">
+                        <a href="<?php echo esc_url(get_the_permalink()); ?>#content">
                             <span><?php the_title(); ?></span>
                          </a>
                         <?php
@@ -182,7 +182,7 @@ if(!empty($main_banner_section_background_image)){ ?>
                                    <div class="item">
                                       <div class="mg-blog-post lg">
                                           <div class="mg-blog-img">
-                                           <a class="ta-slide-items" href="<?php the_permalink(); ?>">
+                                           <a class="ta-slide-items" href="<?php echo esc_url(get_the_permalink()); ?>#content">
                                               <?php if (!empty($newsup_url)): ?>
                                                   <img src="<?php echo esc_url($newsup_url); ?>">
                                               <?php endif; ?>
@@ -192,7 +192,7 @@ if(!empty($main_banner_section_background_image)){ ?>
                                           <article class="bottom">
                                                   <span class="post-form"><i class="fa fa-camera"></i></span>
                                                   <div class="mg-blog-category"> <?php newsup_post_categories(); ?> </div>
-                                                  <h1 class="title"> <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+                                                  <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content"><?php the_title(); ?></a></h1>
                                                   <?php newsup_post_meta(); ?>
                                           </article>
                                       </div>

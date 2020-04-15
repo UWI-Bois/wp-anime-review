@@ -50,7 +50,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/
                       <div class="mg-blog-category">
                       <?php newsup_post_categories(); ?>
                       </div>
-                      <h1 class="title"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>"> <?php the_title(); ?></a> </h1>
+                      <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>"> <?php the_title(); ?></a> </h1>
                       <?php newsup_post_meta(); ?>
                     </div>
                 </div>

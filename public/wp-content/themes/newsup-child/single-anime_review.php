@@ -40,7 +40,7 @@
                                         <div class="mg-blog-category">
                                             <?php newsup_post_categories(); ?>
                                         </div>
-                                        <h1 class="title single"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','newsup'),'after'  => '') ); ?>">
+                                        <h1 class="title single"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','newsup'),'after'  => '') ); ?>">
                                                 <?php the_title(); ?></a>
                                         </h1>
 
@@ -50,7 +50,7 @@
                                                 <span class="mg-blog-date">Date Posted: <?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
                                                 <?php $tag_list = get_the_tag_list();
                                                 if($tag_list){ ?>
-                                                    <span class="newsup-tags"><a href="<?php the_permalink(); ?>"><?php the_tags('', ', ', ''); ?></a></span>
+                                                    <span class="newsup-tags"><a href="<?php echo esc_url(get_the_permalink()); ?>#content"><?php the_tags('', ', ', ''); ?></a></span>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                                     ?>
                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                                         <h4>
-                                                            <a href="<?php the_permalink(); ?>">
+                                                            <a href="<?php echo esc_url(get_the_permalink()); ?>#content">
                                                                 <?php the_title(); ?>
                                                             </a>
                                                             <?php
@@ -239,7 +239,7 @@
                                                             if($newsup_enable_single_post_category == true){ ?>
                                                                 <div class="mg-blog-category"> <?php newsup_post_categories(); ?>
                                                                 </div> <?php } ?>
-                                                            <h1 class="title"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
+                                                            <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
                                                                     <?php the_title(); ?></a>
                                                             </h1>
                                                             <div class="mg-blog-meta">
