@@ -11,6 +11,11 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Text Domain: newsup
 Template: newsup
 */
-#archive-btn{
-    font-size: large;
+
+/* 
+    Developer generated button for 
+    single-$posttype.php file. 
+*/
+#archive-btn {
+  font-size: large;
 }
