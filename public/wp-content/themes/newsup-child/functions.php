@@ -56,6 +56,13 @@ function set_custom_roles(){
     ) );
 }
 
+add_action( 'after_theme_setup', 'load_images()' );
+function load_images(){
+    add_theme_support( 'post_thumbnail' );
+    add_image_size( 'anime_landscape', 1240, 475, $crop = true );
+    add_image_size( 'page_banner', 1500, 300, $crop = true );
+}
+
 if (!function_exists('newsup_get_terms')):
 function newsup_get_terms( $category_id = 0, $taxonomy='category', $default='' ){
     $taxonomy = !empty($taxonomy) ? $taxonomy : 'category';
