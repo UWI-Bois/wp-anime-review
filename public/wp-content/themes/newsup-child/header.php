@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <?php wp_head(); ?>
@@ -19,20 +19,31 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 <a class="skip-link screen-reader-text" href="#content">
-<?php _e( 'Skip to content', 'newsup' ); ?></a>
+<?php _e('Skip to content', 'newsup'); ?></a>
     <div class="wrapper">
         <header class="mg-headwidget">
             <!--==================== TOP BAR ====================-->
 
             <?php do_action('newsup_action_header_section');  ?>
             <div class="clearfix"></div>
-            <?php $background_image = get_theme_support( 'custom-header', 'default-image' );
-            if ( has_header_image() ) {
-              $background_image = get_header_image();
-            } ?>
-            <div class="mg-nav-widget-area-back" style='background: url("<?php echo esc_url( $background_image ); ?>" ) repeat scroll center 0 #143745;'>
-            <?php $remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-            if($remove_header_image_overlay == true){ ?>
+            <?php $background_image = get_theme_support('custom-header', 'default-image');
+            if (has_header_image()) {
+                $background_image = get_header_image();
+            }
+            
+            // If the current page is a single-anime.php template
+            // then attempt to load the featured image in preference of
+            // the supplied header from the WPAdmin backend.
+            if (is_singular(['anime', 'anime_review'])):
+                if (has_post_thumbnail($post)):
+                    $background_image = get_the_post_thumbnail_url($post);
+                endif;
+            endif;
+            
+            ?>
+            <div class="mg-nav-widget-area-back" style='background: url("<?php echo esc_url($background_image); ?>" ) repeat scroll center 0 #143745;'>
+            <?php $remove_header_image_overlay = get_theme_mods('remove_header_image_overlay', true);
+            if ($remove_header_image_overlay == true) { ?>
             <div class="overlay">
             <?php } ?>
               <div class="inner">
@@ -44,10 +55,10 @@
                                 <?php the_custom_logo();
                                 if (display_header_text()) : ?>
                                 <div class="site-branding-text">
-                                <h1 class="site-title"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+                                <h1 class="site-title"> <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
                                 <p class="site-description"><?php bloginfo('description'); ?></p>
                                 </div>
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wp"> <span class="sr-only"><?php esc_html_e('Toggle Navigation','newsup');?></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wp"> <span class="sr-only"><?php esc_html_e('Toggle Navigation', 'newsup');?></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                               <?php endif; ?>
                                 </div>
                             </div>
@@ -57,8 +68,8 @@
                     </div>
                 </div>
               </div>
-              <?php $remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-              if($remove_header_image_overlay == true){ ?>
+              <?php $remove_header_image_overlay = get_theme_mods('remove_header_image_overlay', true);
+              if ($remove_header_image_overlay == true) { ?>
               </div>
              <?php } ?>
           </div>
@@ -66,18 +77,18 @@
             <nav class="navbar navbar-default navbar-static-top navbar-wp">
                 <div class="container-fluid">
          <!-- navbar-toggle -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wp"> <span class="sr-only"><?php esc_html_e('Toggle Navigation','newsup'); ?></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wp"> <span class="sr-only"><?php esc_html_e('Toggle Navigation', 'newsup'); ?></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
           <!-- /navbar-toggle -->
 
                   <div class="collapse navbar-collapse" id="navbar-wp">
-                  <?php wp_nav_menu( array(
-        								'theme_location' => 'primary',
-        								'container'  => 'nav-collapse collapse navbar-inverse-collapse',
-        								'menu_class' => 'nav navbar-nav',
-        								'fallback_cb' => 'newsup_fallback_page_menu',
-        								'walker' => new newsup_nav_walker()
-        							) );
-        						?>
+                  <?php wp_nav_menu(array(
+                                        'theme_location' => 'primary',
+                                        'container'  => 'nav-collapse collapse navbar-inverse-collapse',
+                                        'menu_class' => 'nav navbar-nav',
+                                        'fallback_cb' => 'newsup_fallback_page_menu',
+                                        'walker' => new newsup_nav_walker()
+                                    ));
+                                ?>
               </div>
           </div>
       </nav> <!-- /Navigation -->
@@ -97,20 +108,19 @@
  <!-- ==================== FEATURE BANNER ===================== -->
 <?php
 if (is_front_page() || is_home()) {
-    $show_flash_news_section = newsup_get_option('show_flash_news_section');
-if ($show_flash_news_section):
+     $show_flash_news_section = newsup_get_option('show_flash_news_section');
+     if ($show_flash_news_section):
 ?>
 <section class="mg-latest-news-sec">
     <?php
     $category = newsup_get_option('select_flash_news_category');
-    $number_of_posts = newsup_get_option('number_of_flash_news');
-    $newsup_ticker_news_title = newsup_get_option('flash_news_title');
+     $number_of_posts = newsup_get_option('number_of_flash_news');
+     $newsup_ticker_news_title = newsup_get_option('flash_news_title');
 
-    $all_posts = newsup_get_posts($number_of_posts, $category);
-    $all_posts = new WP_Query(array('post_type' => 'anime', 'orderby' => 'date'));
-    $show_trending = true;
-    $count = 1;
-    ?>
+     $all_posts = newsup_get_posts($number_of_posts, $category);
+     $all_posts = new WP_Query(array('post_type' => 'anime', 'orderby' => 'date'));
+     $show_trending = true;
+     $count = 1; ?>
     <div class="container-fluid">
         <div class="mg-latest-news">
              <div class="bn_title">
@@ -123,40 +133,38 @@ if ($show_flash_news_section):
             <div class="mg-latest-news-slider marquee">
                 <?php
                 if ($all_posts->have_posts()) :
-                    while ($all_posts->have_posts()) : $all_posts->the_post();
-                        ?>
+                    while ($all_posts->have_posts()) : $all_posts->the_post(); ?>
                         <a href="<?php echo esc_url(get_the_permalink()); ?>#content">
                             <span><?php the_title(); ?></span>
                          </a>
                         <?php
                         $count++;
-                    endwhile;
-                    endif;
-                    wp_reset_postdata();
-                    ?>
+     endwhile;
+     endif;
+     wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
 </section>
 <!-- Excluive line END -->
 <?php endif;
-}
+ }
  ?>
  <!-- ======================= END BANNER ====================== -->
  <!-- =================== FEATURE CAROUSEL ==================== -->
 <?php
 if (is_front_page()) {
-$newsup_enable_main_slider = newsup_get_option('show_main_news_section');
-$select_vertical_slider_news_category = newsup_get_option('select_vertical_slider_news_category');
-$vertical_slider_number_of_slides = newsup_get_option('vertical_slider_number_of_slides');
-$all_posts_vertical = newsup_get_posts($vertical_slider_number_of_slides, $select_vertical_slider_news_category);
-if ($newsup_enable_main_slider):
+     $newsup_enable_main_slider = newsup_get_option('show_main_news_section');
+     $select_vertical_slider_news_category = newsup_get_option('select_vertical_slider_news_category');
+     $vertical_slider_number_of_slides = newsup_get_option('vertical_slider_number_of_slides');
+     $all_posts_vertical = newsup_get_posts($vertical_slider_number_of_slides, $select_vertical_slider_news_category);
+     if ($newsup_enable_main_slider):
 
     $main_banner_section_background_image = newsup_get_option('main_banner_section_background_image');
-    $main_banner_section_background_image_url = wp_get_attachment_image_src($main_banner_section_background_image, 'full');
-if(!empty($main_banner_section_background_image)){ ?>
+     $main_banner_section_background_image_url = wp_get_attachment_image_src($main_banner_section_background_image, 'full');
+     if (!empty($main_banner_section_background_image)) { ?>
      <section class="mg-fea-area over" style="background-image:url('<?php echo $main_banner_section_background_image_url[0]; ?>');">
-<?php }else{ ?>
+<?php } else { ?>
     <section class="mg-fea-area">
 <?php  } ?>
     <div class="overlay">
@@ -167,18 +175,16 @@ if(!empty($main_banner_section_background_image)){ ?>
                         <div id="homemain"class="homemain owl-carousel mr-bot60 pd-r-10">
                           <?php
                           $newsup_slider_category = newsup_get_option('select_slider_news_category');
-                          $newsup_number_of_slides = newsup_get_option('number_of_slides');
-                          $newsup_all_posts_main = newsup_get_posts($newsup_number_of_slides, $newsup_slider_category);
-                          $newsup_all_posts_main = new WP_Query(array('post_type' => 'anime', 'orderby' => 'rand'));
-                          $newsup_count = 1;
+     $newsup_number_of_slides = newsup_get_option('number_of_slides');
+     $newsup_all_posts_main = newsup_get_posts($newsup_number_of_slides, $newsup_slider_category);
+     $newsup_all_posts_main = new WP_Query(array('post_type' => 'anime', 'orderby' => 'rand'));
+     $newsup_count = 1;
 
-                          if ($newsup_all_posts_main->have_posts()) :
+     if ($newsup_all_posts_main->have_posts()) :
                               while ($newsup_all_posts_main->have_posts()) : $newsup_all_posts_main->the_post();
 
-                                  global $post;
-                                  $newsup_url = newsup_get_freatured_image_url($post->ID, 'newsup-slider-full');
-
-                                  ?>
+     global $post;
+     $newsup_url = newsup_get_freatured_image_url($post->ID, 'newsup-slider-full'); ?>
                                    <div class="item">
                                       <div class="mg-blog-post lg">
                                           <div class="mg-blog-img">
@@ -199,13 +205,12 @@ if(!empty($main_banner_section_background_image)){ ?>
                                   </div>
                               <?php
                               endwhile;
-                          endif;
-                          wp_reset_postdata();
-                          ?>
+     endif;
+     wp_reset_postdata(); ?>
                         </div>
                     </div>
                 </div>
-                <?php do_action('newsup_action_banner_tabbed_posts');?>
+                <?php do_action('newsup_action_banner_tabbed_posts'); ?>
             </div>
         </div>
     </div>
@@ -213,6 +218,7 @@ if(!empty($main_banner_section_background_image)){ ?>
 <!--==/ Home Slider ==-->
 <?php endif; ?>
 <!-- end slider-section -->
-<?php }
+<?php
+ }
  ?>
  <!-- ==================== END CAROUSEL ===================== -->
