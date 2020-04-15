@@ -5,6 +5,10 @@
   Review website.
 */
 
+// When Wordpress is initialized, it will call
+// this function to register three new post types 
+// required for this website.
+add_action('init', 'anime_post_types')
 function anime_post_types () {
   register_post_type('anime',
     array(
@@ -62,6 +66,5 @@ function anime_post_types () {
   );
 }
 
-add_action('init', 'anime_post_types')
 
 ?>
