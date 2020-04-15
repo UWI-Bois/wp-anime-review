@@ -10,7 +10,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
       <div class="row">
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
-            <h1><?php echo "Posts by: ",  get_the_archive_title(); ?></h1> <!-- change -->
+            <h1><?php echo "Posts by: ",  get_the_archive_title(); ?></h1> 
           </div>
         </div>
       </div>
