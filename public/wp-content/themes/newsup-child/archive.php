@@ -10,7 +10,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
       <div class="row">
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
-            <h1><?php the_archive_title(  ); ?></h1>
+            <h1><?php echo "Posts by: ",  get_the_archive_title(); ?></h1> <!-- change -->
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
   // will be modified to use a WP_Query against all "Anime" and
   // "Review" custom post types.
 ?>
-<div id="content" class="container w-50">
+<div id="content" class="container w-50" style="padding-top: 25px">
   <div class="col-md-12 col-sm-12">
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="mg-posts-sec mg-posts-modul-6">
