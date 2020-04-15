@@ -31,13 +31,14 @@
                 $background_image = get_header_image();
             }
             
-            // If the current page is a single-anime.php template
+            // If the current page is a single-$posttype.php template
             // then attempt to load the featured image in preference of
             // the supplied header from the WPAdmin backend.
-            if (is_singular(['anime', 'anime_review'])):
-                if (has_post_thumbnail($post)):
-                    $background_image = get_the_post_thumbnail_url($post);
-                endif;
+            if (is_singular('anime')):
+                    $background_image = (has_post_thumbnail($post)) ? get_the_post_thumbnail_url($post) : $background_image;
+            elseif (is_singular('anime_review')):
+                $related_anime = get_field('review_anime');
+                $background_image = ($related_anime) ? get_the_post_thumbnail_url($related_anime) : $background_image;
             endif;
             
             ?>
