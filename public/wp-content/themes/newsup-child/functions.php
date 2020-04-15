@@ -223,7 +223,7 @@ if (!function_exists('newsup_render_posts')):
                                 </div>
                                  <div class="title_small_post">
 
-                                    <a href="<?php the_permalink(); ?>">
+                                    <a href="<?php echo esc_url(get_the_permalink()); ?>#content">
                                         <h5>
                                         <?php the_title(); ?>
                                         </h5>

@@ -151,7 +151,7 @@
                           <div class="mg-wid-title">
                               <h1>
                                   Some random
-                                  <b><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></b>
+                                  <b><a href="<?php echo esc_url(get_the_permalink()); ?>#content"><?php the_title(); ?></a></b>
                                   reviews
                               </h1>
                           </div>
@@ -166,7 +166,7 @@
                                       ?>
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <h4>
-                                                    <a style="font-size: 20px;" href="<?php the_permalink(); ?>">
+                                                    <a style="font-size: 20px;" href="<?php echo esc_url(get_the_permalink()); ?>#content">
                                                         <?php the_title(); ?>
                                                     </a>
                                                     <?php
@@ -255,7 +255,7 @@
                                             if($newsup_enable_single_post_category == true){ ?>
                                             <div class="mg-blog-category"> <?php newsup_post_categories(); ?>
                                           </div> <?php } ?>
-                                            <h1 class="title"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
+                                            <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
                                               <?php the_title(); ?></a>
                                              </h1>
                                             <div class="mg-blog-meta">

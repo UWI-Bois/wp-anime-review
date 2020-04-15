@@ -89,7 +89,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                       ?>
                                   </div>
 
-                                  <h1 class="entry-title title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+                                  <h1 class="entry-title title"><a href="<?php echo esc_url(get_the_permalink()); ?>#content"><?php the_title();?></a></h1>
 
                                   <div class="mg-blog-meta">
                                       <span class="mg-blog-date"><i class="fa fa-clock-o"></i>
