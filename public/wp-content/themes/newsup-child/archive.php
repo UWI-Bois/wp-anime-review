@@ -45,6 +45,14 @@ if($newsup_remove_header_image_overlay == true){ ?>
                   global $post;
                   ?>
                   <article class="mg-posts-sec-post">
+                      <div class="mg-sec-title">
+                        <h4>
+                        <?php
+                        $post_types_obj = get_post_type_object( get_post_type() ); //finds the relevant custom post object by using the type as a search parameter
+                        echo $post_types_obj->labels->singular_name; //outputs the singular name from the labels array in the object
+                        ?>
+                        </h4> 
+                      </div>
                       <div class="standard_post">
                           <?php if(has_post_thumbnail()) { ?>
                           <div class="mg-thum-list col-md-6">
