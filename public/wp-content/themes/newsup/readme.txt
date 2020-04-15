@@ -159,4 +159,11 @@ License: CC0 Public Domain
 * Fixed sanitize issue.
 
 = Version 2.6
+<<<<<<< HEAD
 * Added Edit link and fix archive page title issue.
+
+= Version 2.7
+* Fix Page title issue.
+=======
+* Added Edit link and fix archive page title issue.
+>>>>>>> master

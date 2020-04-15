@@ -29,18 +29,14 @@ function newsup_header_section()
             $newsup_header_pintrest_link = get_theme_mod('newsup_header_pintrest_link');
             $newsup_header_pintrest_target = esc_attr(get_theme_mod('newsup_header_pintrest_target','true'));  ?>
             <div class="col-md-6 col-xs-12 col-sm-6">
-            <?php if($header_data_enable == true)
-            {
-            ?>
                 <ul class="info-left">
-                    <li><?php
-                        echo date_i18n('D. M jS, Y ', strtotime(current_time("Y-m-d"))); 
+                    <li><?php if($header_data_enable == true) {
+                        echo date_i18n('D. M jS, Y ', strtotime(current_time("Y-m-d"))); }
                         if($header_time_enable == true) { ?>
                         <span  id="time" class="time"></span>
                       <?php } ?>
                     </li>
                 </ul>
-            <?php } ?>
             </div>
             <?php 
             if($header_social_icon_enable == true)

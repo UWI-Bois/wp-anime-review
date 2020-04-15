@@ -26,7 +26,7 @@ node_modules/
 !Project-INFO3603.pdf
 !README.md
 
-# ignore idea folder
+# ignore idea folder from php storm ide
 .idea/
 
 public/wp-content/cache/

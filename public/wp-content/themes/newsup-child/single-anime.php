@@ -3,29 +3,14 @@
 ============================== -->
 <?php get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
-<?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  <div class="overlay">
-<?php } ?>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-			    <div class="mg-breadcrumb-title">
-            <h1><?php the_title(); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  </div>
-<?php } ?>
-</div>
-<div class="clearfix"></div>
 <!-- =========================
      Page Content Section
 ============================== -->
+<style>
+    h2{
+        padding-bottom: 15px;
+    }
+</style>
 <main id="content">
     <!--container-->
     <div class="container-fluid">
@@ -33,6 +18,9 @@ if($newsup_remove_header_image_overlay == true){ ?>
       <div class="row">
         <!--col-md-->
         <?php
+        $this_id = get_the_ID();
+        $this_title = get_the_title();
+//        echo $this_id;
                     $newsup_single_page_layout = get_theme_mod('newsup_single_page_layout','single-align-content-right');
                     if($newsup_single_page_layout == "single-align-content-left")
                     { ?>
@@ -51,26 +39,18 @@ if($newsup_remove_header_image_overlay == true){ ?>
 		      <?php if(have_posts())
 		        {
 		      while(have_posts()) { the_post(); ?>
-            <div class="mg-blog-post-box">
+            <div class="media mg-info-author-block">
               <div class="mg-header">
                 <div class="mg-blog-category">
                       <?php newsup_post_categories(); ?>
                 </div>
-                <h1 class="title single"> <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','newsup'),'after'  => '') ); ?>">
-                  <?php the_title(); ?></a>
-                </h1>
-
-                <div class="media mg-info-author-block"> <a class="mg-author-pic" href="#"> <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><span><?php esc_html_e('By','newsup'); ?></span><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                    <span class="mg-blog-date"><?php echo get_the_date('M'); ?> <?php echo get_the_date('j,'); ?> <?php echo get_the_date('Y'); ?></span>
-                    <?php $tag_list = get_the_tag_list();
-                    if($tag_list){ ?>
-                    <span class="newsup-tags"><a href="<?php the_permalink(); ?>"><?php the_tags('', ', ', ''); ?></a></span>
-                  <?php } ?>
-                  </div>
-                </div>
               </div>
+                <div class="mg-wid-title">
+                    <h1>
+                        <b><?php the_title(); ?></b>
+                    </h1>
+                </div>
+
               <?php
               $single_show_featured_image = esc_attr(get_theme_mod('single_show_featured_image','true'));
               if($single_show_featured_image == true) {
@@ -79,24 +59,150 @@ if($newsup_remove_header_image_overlay == true){ ?>
               the_post_thumbnail( '', array( 'class'=>'img-responsive' ) );
               echo '</a>';
                } }?>
-              <article class="small single">
+              <article style="font-size: 20px;">
                 <?php the_content(); ?>
               </article>
             </div>
 		      <?php } ?>
 
-           <div class="media mg-info-author-block">
-            <?php $newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
-            if($newsup_enable_single_post_admin_details == true) { ?>
-            <a class="mg-author-pic" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
-                <div class="media-body">
-                  <h4 class="media-heading"><?php esc_html_e('By','newsup'); ?> <a href "<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-                  <p><?php the_author_meta( 'description' ); ?></p>
-                </div>
-              <?php } ?>
-            </div><?php $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+<!--                    list genres and anime information here-->
+                    <?php
+                    $genres = get_field('anime_genres'); // relationship (other post type)
+                    $author = get_field('anime_author'); // text area
+                    $release_date = get_field('anime_release_date'); // date picker
+                    $languages = get_field('anime_languages'); // checkbox
+                    ?>
+                    <div class="media mg-info-author-block">
+                        <div class="mg-wid-title">
+                            <h1>
+                                About <b><?php the_title(); ?></b>
+                            </h1>
+                        </div>
+                        <div class="media-body">
+                            <?php if ($author): ?>
+                            <u><h2>Author</h2></u>
+                            <p style="font-size: large;"><b><?php echo $author; ?></b></p>
+                            <hr>
+                            <?php endif; ?>
+
+                            <?php if($release_date): ?>
+                            <u><h2>Release Date</h2></u>
+                            <p style="font-size: large;"><b><?php echo $release_date; ?></b></p>
+                            <hr>
+                            <?php endif; ?>
+
+<!--                            print genres only if there are any associated-->
+                            <?php
+                            if($genres) { ?>
+                            <u><h2>Genre(s)</h2></u>
+                            <div class="media-body">
+                                <ul>
+                                <?php
+                                foreach ($genres as $genre) { ?>
+                                    <li>
+                                        <a style="font-size: 20px;" href="<?php echo get_the_permalink($genre); ?>">
+                                            <?php echo get_the_title($genre); ?>
+                                        </a>
+                                    </li>
+	                                <?php
+                                } // end foreach
+                            } // end if
+                            ?>
+                                </ul>
+                            <hr>
+                            </div>
+
+
+<!--                            print languages only if there are any associated-->
+                            <?php
+                            if($languages) {
+	                            ?>
+                                <u><h2>Language(s)</h2></u>
+                                <ul>
+                                <?php
+                                foreach ($languages as $language) { ?>
+                                    <li>
+                                        <a style="font-size: 20px;" href="<?php echo get_the_permalink($language); ?>">
+                                            <?php echo $language; ?>
+                                        </a>
+                                    </li>
+	                                <?php
+                                } // end foreach
+                            } // end if
+                            ?>
+                                </ul>
+                            <hr>
+                        </div>
+                    </div>
+
+<!--                    print associated anime reviews in another card-->
+                  <?php
+                  $query_all = array(
+                      'posts_per_page' => 15,
+                      'post_type'=> 'anime_review',
+                      'orderby' => 'rand',
+                      'order' => 'ASC'
+                  );
+                  $reviews_query = new WP_Query($query_all);
+                  ?>
+                  <?php
+                  if($reviews_query) { ?>
+                      <div style="padding: 40px" class="media mg-card-box">
+                          <div class="mg-wid-title">
+                              <h1>
+                                  Some random
+                                  <b><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></b>
+                                  reviews
+                              </h1>
+                          </div>
+                          <div class="media-body">
+                              <ul class="list-group">
+                                  <?php
+                                    while($reviews_query->have_posts()){
+                                        $reviews_query->the_post();
+                                        $related_anime = get_field('review_anime');
+                                        $reviews_rating = get_field('review_rating');
+                                        if($this_title == get_the_title($related_anime)){
+                                      ?>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <h4>
+                                                    <a style="font-size: 20px;" href="<?php the_permalink(); ?>">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                    <?php
+                                                    if($reviews_rating) {
+                                                        ?>
+                                                        <span class="badge badge-primary badge-pill">
+                                                            Rating:
+                                                            <?php echo $reviews_rating; ?>
+                                                            / 5
+                                                        </span>
+                                                        <?php
+                                                    }// end if reviews rating
+                                                    ?>
+                                                </h4>
+                                            </li>
+                                            <?php } // end if ?>
+                          <?php
+                      } // end loop ?>
+                              </ul>
+                              <button id="archive-btn" type="button" class="btn btn-primary">
+                                  <a style="color: white" href="<?php echo get_post_type_archive_link('anime_review') ?>">
+                                      All Reviews
+                                  </a>
+                              </button>
+                          </div>
+                      </div>
+                      <?php
+                      wp_reset_postdata();
+                  } // end if ?>
+
+                  <?php
+                  $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
+                  $newsup_enable_related_post = false; // comment out this line to print the related post card on this single page.
                                 if($newsup_enable_related_post == true){
                             ?>
+<!--                this is for the related posts card -->
               <div class="mg-featured-slider">
                         <!--Start mg-realated-slider -->
                         <div class="mg-sec-title">
@@ -183,7 +289,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
       <!--sidebar-->
           <!--col-md-3-->
             <aside class="col-md-3 col-sm-4">
-                  <?php get_sidebar();?>
+                  <?php get_sidebar(); // load the widgets on the side (meta, recent comments, etc)?>
             </aside>
           <!--/col-md-3-->
       <!--/sidebar-->

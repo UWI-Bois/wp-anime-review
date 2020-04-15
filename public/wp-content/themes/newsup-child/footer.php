@@ -7,6 +7,7 @@
  * @package Newsup
  */
 $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
+$curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
             if($you_missed_enable == true){
 ?>
   <div class="container-fluid mr-bot40 mg-posts-sec-inner">
@@ -21,7 +22,14 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
                 </div>
             </div>
             <?php }
-            $newsup_you_missed_loop = new WP_Query(array( 'post_type' => 'post', 'posts_per_page' => 4, 'order' => 'DESC',  'ignore_sticky_posts' => true));
+            $you_missed_args = array(
+	            'post_type' => 'anime',
+                'posts_per_page' => 4,
+                'order' => 'DESC',
+                'orderby' => 'rand',
+                'ignore_sticky_posts' => true
+            );
+            $newsup_you_missed_loop = new WP_Query($you_missed_args);
             if ( $newsup_you_missed_loop->have_posts() ) :
             while ( $newsup_you_missed_loop->have_posts() ) : $newsup_you_missed_loop->the_post(); ?>
                 <!--col-md-3-->

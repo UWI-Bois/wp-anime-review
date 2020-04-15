@@ -1,0 +1,4 @@
+# ignore all themes except newsup-based themes and .gitignore
+*
+!.gitignore
+!public/wp-content/themes/newsup*

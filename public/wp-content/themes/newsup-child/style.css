@@ -11,3 +11,6 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Text Domain: newsup
 Template: newsup
 */
+#archive-btn{
+    font-size: large;
+}

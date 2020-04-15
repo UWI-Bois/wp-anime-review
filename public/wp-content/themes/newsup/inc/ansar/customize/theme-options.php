@@ -45,16 +45,13 @@ $wp_customize->add_section( 'header_options' , array(
         'sanitize_callback' => 'newsup_sanitize_checkbox',
     )
     );
-    $wp_customize->add_control(new Newsup_Toggle_Control( $wp_customize, 'header_time_enable
-
-        ', 
+    $wp_customize->add_control(new Newsup_Toggle_Control( $wp_customize, 'header_time_enable', 
         array(
             'label' => esc_html__('Hide / Show Time', 'newsup'),
             'type' => 'toggle',
             'section' => 'header_options',
         )
     ));
-
 
 
     $wp_customize->add_setting('header_social_icon_enable',
@@ -70,8 +67,6 @@ $wp_customize->add_section( 'header_options' , array(
             'section' => 'header_options',
         )
     ));
-
-    
     
 
     // Soical facebook link

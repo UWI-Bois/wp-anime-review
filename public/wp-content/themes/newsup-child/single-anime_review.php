@@ -7,7 +7,6 @@
 <!-- =========================
      Page Content Section
 ============================== -->
-<!--<p>single-anime.php -> in child dir</p>-->
 <main id="content">
     <!--container-->
     <div class="container-fluid">
@@ -83,10 +82,6 @@
                                             $anime_po_permalink = get_the_permalink();
                                             wp_reset_postdata(); // important, if omitted, the rest of the post methods will be related to the anime post object (eg, the_title() -> Bleach)
                                         }
-                                        // some debugging
-                                        //                            print_r($anime_po_title);
-                                        //                            print_r($anime_po_id);
-                                        //                            print_r($anime_po);
                                         ?>
                                         <hr>
                                         <hr>
@@ -124,7 +119,7 @@
                             <div style="padding: 40px" class="media mg-card-box">
                                 <div class="mg-wid-title">
                                     <h1>
-                                        More
+                                        Some Random
                                         <a href="<?php echo $anime_po_permalink; ?>"><?php echo $anime_po_title ?></a>
                                         Reviews
                                     </h1>
@@ -144,17 +139,6 @@
                                             $reviews_anime_title = $reviews_anime->post_title; // works
 
                                             if($this_id != get_the_ID()) {
-                                                // debug stuff, comment out before pushing
-//                                                echo '$reviews_anime: <br>';
-//                                                print_r($reviews_anime);
-//                                                echo (
-//                                                    '<br> <br>'
-//                                                    . $this_id . ' = ' . 'thisid' . '<br>'
-//                                                    . $anime_po_id . ' = ' . '$anime_po_id' . '<br>'
-//                                                    . $reviews_anime_id . ' = ' . '$reviews_anime_id'  . '<br>'
-//                                                    . $reviews_anime_title  . ' = $reviews_anime_title' . '<br>'
-//                                                    . $anime_po_title  . ' = $anime_po_title' . '<br>'
-//                                                );
                                                 if($anime_po_id == $reviews_anime_id) {
                                                     ?>
                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -187,22 +171,14 @@
                                 } // end if reviews query
                                 ?>
 
+                                <button type="button" class="btn btn-primary" style="font-size: large;">
+                                    <a style="color: white" href="<?php echo get_post_type_archive_link('anime_review') ?>">
+                                        View All Reviews
+                                    </a>
+                                </button>
+
                             </div>
 
-
-
-
-                            <!--                  author card-->
-                            <!--           <div class="media mg-info-author-block">-->
-                            <!--            --><?php //$newsup_enable_single_post_admin_details = esc_attr(get_theme_mod('newsup_enable_single_post_admin_details','true'));
-//            if($newsup_enable_single_post_admin_details == true) { ?>
-                            <!--            <a class="mg-author-pic" href="--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //echo get_avatar( get_the_author_meta( 'ID') , 150); ?><!--</a>-->
-                            <!--                <div class="media-body">-->
-                            <!--                  <h4 class="media-heading">--><?php //esc_html_e('Posted By','newsup'); ?><!-- <a href "--><?php //echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?><!--">--><?php //the_author(); ?><!--</a></h4>-->
-                            <!--                  <p>--><?php //the_author_meta( 'description' ); ?><!--</p>-->
-                            <!--                </div>-->
-                            <!--              --><?php //} ?>
-                            <!--            </div>-->
                             <?php
                             $newsup_enable_related_post = esc_attr(get_theme_mod('newsup_enable_related_post','true'));
                             $newsup_enable_related_post = false; // comment out this line to print the related post card on this single page.
@@ -285,7 +261,6 @@
                                         wp_reset_postdata();
                                         ?>
                                     </div>
-
                                 </div>
                                 <!--End mg-realated-slider -->
                             <?php } }

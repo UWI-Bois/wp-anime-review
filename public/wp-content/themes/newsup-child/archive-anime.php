@@ -77,13 +77,15 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                       ));
                                       $post_type = get_post_type( $post );
                                         $meta_value = get_field('anime_genres');
-                                        foreach ($meta_value as $val):
-                                          ?>
-                                          <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                            <?php echo esc_html( $val->post_title ); ?>
-                                          </a>
-                                          <?php
-                                        endforeach; // for each genre on
+                                        if ($meta_value):
+                                          foreach ($meta_value as $val):
+                                            ?>
+                                            <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
+                                              <?php echo esc_html( $val->post_title ); ?>
+                                            </a>
+                                            <?php
+                                          endforeach; // for each genre on
+                                        endif;
                                       ?>
                                   </div>
 
