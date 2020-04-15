@@ -6,7 +6,6 @@ public/*.*
 # track everything in the "public/wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 !public/wp-content/mu-plugins/
-!public/wp-content/plugins/
 
 # ignore all themes
 public/wp-content/themes/*
@@ -29,6 +28,8 @@ node_modules/
 # ignore idea folder from php storm ide
 .idea/
 
+public/wp-content/ai1wm-backups/
 public/wp-content/cache/
 public/wp-content/plugins/
 public/wp-content/w3tc-config/
+public/wp-content/uploads/
