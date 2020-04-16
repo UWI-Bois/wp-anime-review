@@ -56,6 +56,21 @@ function set_custom_roles(){
     ) );
 }
 
+/**
+ * Merge two arrays using the PHP version 
+ * and then return the merged array.
+ *
+ * @param array $dest
+ * @param array $val
+ * @return array [...$dest, $val]
+ */
+function array_push_aux($dest=[], $val=[]) {
+    array_push($dest, $val);
+    return $dest;
+}
+
+
+
 if (!function_exists('newsup_get_terms')):
 function newsup_get_terms( $category_id = 0, $taxonomy='category', $default='' ){
     $taxonomy = !empty($taxonomy) ? $taxonomy : 'category';
