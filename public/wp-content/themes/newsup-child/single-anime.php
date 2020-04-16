@@ -331,7 +331,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
                 $you_missed_args = array(
                 'post_type' => 'anime',
                 'posts_per_page' => 4,
-                'meta_query' => array_push(array_map(
+                'meta_query' => array_push_aux(array_map(
                     function ($genre) {
                         return array(
                             'key' => 'anime_genres',
@@ -342,7 +342,6 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
                     get_field('anime_genres')
                 ), ['relation' => 'OR']),
             );
-                echo print_r($you_missed_args);
 
                 $newsup_you_missed_loop = new WP_Query($you_missed_args);
                 if ($newsup_you_missed_loop->have_posts()) :
