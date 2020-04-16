@@ -200,7 +200,25 @@ if (is_front_page()) {
                                                   <span class="post-form"><i class="fa fa-camera"></i></span>
                                                   <div class="mg-blog-category"> <?php newsup_post_categories(); ?> </div>
                                                   <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content"><?php the_title(); ?></a></h1>
-                                                  <?php newsup_post_meta(); ?>
+                                                  <div class="mg-blog-meta">
+                                                  <?php
+                                                    $anime_date = new DateTime(get_field('anime_release_date'));
+                                                    $anime_author = get_field('anime_author');
+                                                  ?>
+                                                    <span class="mg-blog-date"><i class="fa fa-clock-o"></i>
+                                                        <a>
+                                                            <?php 
+                                                            echo esc_html($anime_date->format('M j, Y')); 
+                                                            ?>
+                                                        </a>
+                                                    </span>
+                                                    <a class="auth" href="<?php echo esc_url(get_the_permalink());?>">
+                                                        <i class="fa fa-user-circle-o"></i> 
+                                                        <?php 
+                                                            echo ($anime_author) ? $anime_author : 'Unknown';
+                                                        ?>
+                                                    </a> 
+                                                </div>
                                           </article>
                                       </div>
                                   </div>
