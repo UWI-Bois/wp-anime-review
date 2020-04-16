@@ -1,5 +1,5 @@
 <?php
-  get_header(  );
+    get_header(  );
 ?>
 <div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
 <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
@@ -11,6 +11,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
             <h1><?php echo "Posts by: ",  get_the_archive_title(); ?></h1>
+            <?php echo $author_id; ?>
             author.php
           </div>
         </div>
@@ -40,10 +41,11 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="mg-posts-sec mg-posts-modul-6">
             <div class="mg-posts-sec-inner">
                 <?php
+                $author_ID = ( get_user_by('slug',get_query_var('author_name')) )->ID; // get author ID from slug
                 $all_custom_posts = new WP_Query(
                     array(
                         'post_type' => array('anime', 'anime_review', 'posts', 'genre'),
-                        'author' => get_the_author_ID()
+                        'author' => $author_ID // filter by author
                     )
                 );
                 while ($all_custom_posts->have_posts()):
