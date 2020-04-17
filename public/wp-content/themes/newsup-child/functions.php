@@ -69,7 +69,29 @@ function array_push_aux($dest=[], $val=[]) {
     return $dest;
 }
 
-
+/**
+ * This function overrides the default WP_Query 
+ * object as the primary query for a subset of 
+ * template files: specifically the archives.
+ * 
+ * E.g. When the archive.php and author.php for example 
+ * use the default WP_Query object as the primary 
+ * query which only searches for Page and Post 
+ * default post types.
+ *
+ * @param [WP_Query] $query
+ * @return void
+ */
+function adjust_archive_index_query($query) {
+    // We exclude the custom post types from the check 
+    // as the archive-$posttype.php already overrites 
+    // the WP_Query that is used for those pages.
+    if (is_archive() && !is_post_type_archive($post_types=['anime', 'genre', 'anime_review'])):
+        // This condition is true on the archive.php and author.php templates.
+        $query->set('post_type', 'any');
+    endif;
+}
+add_action('pre_get_posts', 'adjust_archive_index_query');
 
 if (!function_exists('newsup_get_terms')):
 function newsup_get_terms( $category_id = 0, $taxonomy='category', $default='' ){
