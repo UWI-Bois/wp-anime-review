@@ -86,9 +86,9 @@ function adjust_archive_index_query($query) {
     // We exclude the custom post types from the check 
     // as the archive-$posttype.php already overrites 
     // the WP_Query that is used for those pages.
-    if (is_archive() && !is_post_type_archive($post_types=['anime', 'genre', 'anime_review'])):
+    if ((is_home() || is_archive()) && !is_post_type_archive($post_types=['anime', 'genre', 'anime_review'])):
         // This condition is true on the archive.php and author.php templates.
-        $query->set('post_type', 'any');
+        $query->set('post_type', ['anime', 'genre', 'anime_review']);
     endif;
 }
 add_action('pre_get_posts', 'adjust_archive_index_query');
