@@ -65,23 +65,13 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                       <?php
                                       // This gets all the anime related to this genre,
                                       // not all but at least 3 - 5, randomly.
-
-                                      $some_animes = new WP_Query(array(
-                                        'post_type' => 'anime',
-                                        'posts_per_page' => 4,
-                                        'meta_query' => array(
-                                          array(
-
-                                          ), // meta_query[0]: anime genre matches this genre
-                                        ),
-                                      ));
                                       $post_type = get_post_type( $post );
                                         $meta_value = get_field('anime_genres');
                                         if ($meta_value):
                                           foreach ($meta_value as $val):
                                             ?>
                                             <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                              <?php echo esc_html( $val->post_title ); ?>
+                                              <?php echo esc_html( get_the_title(get_post($val)) ); ?>
                                             </a>
                                             <?php
                                           endforeach; // for each genre on

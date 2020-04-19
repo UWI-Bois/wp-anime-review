@@ -66,7 +66,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                       // This gets all the anime related to this genre,
                                       // not all but at least 3 - 5, randomly.
 
-                                      $review_anime = get_field('review_related_anime');
+                                      $review_anime = get_field('review_anime');
                                       if ($review_anime):
                                         ?>
                                         <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $review_anime )) ?>" alt="">
