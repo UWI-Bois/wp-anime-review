@@ -39,10 +39,8 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="mg-posts-sec mg-posts-modul-6">
             <div class="mg-posts-sec-inner">
                 <?php
-                $all_custom_posts = new WP_Query(array('post_type' => array('anime', 'anime_review')));
-                while ($all_custom_posts->have_posts()):
-                  $all_custom_posts->the_post();
-                  global $post;
+                while (have_posts()):
+                  the_post();
                   ?>
                   <article class="mg-posts-sec-post">
                       <div class="standard_post">
