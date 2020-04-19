@@ -41,15 +41,17 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="mg-posts-sec mg-posts-modul-6">
             <div class="mg-posts-sec-inner">
                 <?php
-                $author_ID = ( get_user_by('slug',get_query_var('author_name')) )->ID; // get author ID from slug
-                $all_custom_posts = new WP_Query(
-                    array(
-                        'post_type' => array('anime', 'anime_review', 'posts', 'genre'),
-                        'author' => $author_ID // filter by author
-                    )
-                );
-                while ($all_custom_posts->have_posts()):
-                  $all_custom_posts->the_post();
+                // $author_ID = ( get_user_by('slug',get_query_var('author_name')) )->ID; // get author ID from slug
+                // $all_custom_posts = new WP_Query(
+                //     array(
+                //         'post_type' => array('anime', 'anime_review', 'posts', 'genre'),
+                //         'author' => $author_ID // filter by author
+                //     )
+                // );
+                // while ($all_custom_posts->have_posts()):
+                  while (have_posts()):
+                    the_post();
+                  // all_custom_posts->the_post();
                   global $post;
                   ?>
                   <article class="mg-posts-sec-post">
