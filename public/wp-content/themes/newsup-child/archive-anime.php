@@ -71,7 +71,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                           foreach ($meta_value as $val):
                                             ?>
                                             <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                              <?php echo esc_html( $val->post_title ); ?>
+                                              <?php echo esc_html( get_the_title(get_post($val)) ); ?>
                                             </a>
                                             <?php
                                           endforeach; // for each genre on
