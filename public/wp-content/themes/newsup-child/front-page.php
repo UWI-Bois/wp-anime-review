@@ -70,9 +70,10 @@ get_header(); ?>
 
                                                                          <div class="mg-blog-meta">
                                                                              <span class="mg-blog-date"><i class="fa fa-clock-o"></i>
-                                                                             <a href="<?php echo esc_url(get_month_link(get_post_time('Y'),get_post_time('m'))); ?>">
-                                                                             <?php echo esc_html(get_the_date('M j, Y')); ?></a></span>
-                                                                             <a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><i class="fa fa-user-circle-o"></i> <?php the_author(); ?></a>
+                                                                             <?php $anime_date = new DateTime(get_field('anime_release_date')); ?>
+                                                                             <a>
+                                                                             <?php echo esc_html($anime_date->format('M j, Y')); ?></a></span>
+                                                                             <span><i class="fa fa-user-circle-o"></i> <?php echo (get_field('anime_author') ? get_field('anime_author'): 'Unknown'); ?></span>
                                                                          </div>
                                                                      </div>
 
