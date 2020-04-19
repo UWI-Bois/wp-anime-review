@@ -95,7 +95,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                           <?php
                                         endforeach; // for each genre on anime
                                       elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_related_anime');
+                                        $meta_value = get_field('review_anime');
                                         ?>
                                         <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
                                           <?php echo esc_html( get_the_title(get_post($meta_value))); ?>
