@@ -6,64 +6,7 @@
  *
  * @package Newsup
  */
-$you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
-$curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-            if($you_missed_enable == true){
 ?>
-  <div class="container-fluid mr-bot40 mg-posts-sec-inner">
-        <div class="missed-inner">
-        <div class="row">
-            <?php $you_missed_title = get_theme_mod('you_missed_title', esc_html('You missed','newsup'));
-            if($you_missed_title) { ?>
-            <div class="col-md-12">
-                <div class="mg-sec-title">
-                    <!-- mg-sec-title -->
-                    <h4><?php echo esc_html($you_missed_title); ?></h4>
-                </div>
-            </div>
-            <?php }
-            $you_missed_args = array(
-	            'post_type' => 'anime',
-                'posts_per_page' => 4,
-                'order' => 'DESC',
-                'orderby' => 'rand',
-                'ignore_sticky_posts' => true
-            );
-            $newsup_you_missed_loop = new WP_Query($you_missed_args);
-            if ( $newsup_you_missed_loop->have_posts() ) :
-            while ( $newsup_you_missed_loop->have_posts() ) : $newsup_you_missed_loop->the_post(); ?>
-                <!--col-md-3-->
-                <div class="col-md-3 col-sm-6 pulse animated">
-                <div class="mg-blog-post-3">
-                    <?php if(has_post_thumbnail()) { ?>
-                    <div class="mg-blog-img">
-                        <?php
-                        echo '<a href="'.esc_url(get_the_permalink()).'">';
-                            the_post_thumbnail( '', array( 'class'=>'img-responsive' ) );
-                            echo '</a>'; ?>
-                    </div>
-                    <?php }  else { ?>
-                    <div class="mg-blog-img image-blog-bg">
-                    </div>
-                   <?php } ?>
-                    <div class="mg-blog-inner">
-                      <div class="mg-blog-category">
-                      <?php newsup_post_categories(); ?>
-                      </div>
-                      <h1 class="title"> <a href="<?php echo esc_url(get_the_permalink()); ?>#content" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>"> <?php the_title(); ?></a> </h1>
-                      <?php newsup_post_meta(); ?>
-                    </div>
-                </div>
-            </div>
-            <!--/col-md-3-->
-         <?php endwhile; endif; wp_reset_postdata(); ?>
-
-
-                </div>
-            </div>
-        </div>
-<?php } ?>
-    </div>
 <!--==================== FOOTER AREA ====================-->
     <?php $newsup_footer_widget_background = get_theme_mod('newsup_footer_widget_background');
     $newsup_footer_overlay_color = get_theme_mod('newsup_footer_overlay_color');
