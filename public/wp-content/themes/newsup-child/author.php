@@ -11,8 +11,6 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
             <h1><?php echo "Posts by: ",  get_the_archive_title(); ?></h1>
-            <?php echo $author_id; ?>
-            author.php
           </div>
         </div>
       </div>
@@ -92,7 +90,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                         foreach ($meta_value as $val):
                                           ?>
                                           <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                            <?php echo esc_html( $val->post_title ); ?>
+                                            <?php echo esc_html( get_the_title(get_post($val)) ); ?>
                                           </a>
                                           <?php
                                         endforeach; // for each genre on anime
@@ -100,7 +98,7 @@ if($newsup_remove_header_image_overlay == true){ ?>
                                         $meta_value = get_field('review_related_anime');
                                         ?>
                                         <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
-                                          <?php echo esc_html( $meta_value->post_title ); ?>
+                                          <?php echo esc_html( get_the_title(get_post($meta_value))); ?>
                                         </a>
                                         <?php
                                       endif;
