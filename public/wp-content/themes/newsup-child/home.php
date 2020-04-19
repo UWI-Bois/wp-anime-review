@@ -63,26 +63,45 @@ if($newsup_remove_header_image_overlay == true){ ?>
                               <div class="mg-sec-top-post">
                                   <div class="mg-blog-category">
                                       <?php
-                                      // This gets all the genres of this post and then
+                                      // This gets all the relevant metadata of this post and then
                                       // embeds them into a pill component to display as
-                                      // the related genres of this post preview.
+                                      // the categories of this post preview.
                                       $post_type = get_post_type( $post );
                                       if ($post_type == 'anime'):
                                         $meta_value = get_field('anime_genres');
                                         foreach ($meta_value as $val):
                                           ?>
                                           <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $val )) ?>" alt="">
-                                            <?php echo esc_html( $val->post_title ); ?>
+                                              <?php echo esc_html( get_the_title(get_post($val))); ?>
                                           </a>
                                           <?php
-                                        endforeach; // for each genre on anime
+                                          endforeach; // for each genre on
                                       elseif ($post_type == 'anime_review'):
-                                        $meta_value = get_field('review_related_anime');
+                                        $meta_value = get_field('review_anime');
                                         ?>
                                         <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $meta_value )) ?>" alt="">
-                                          <?php echo esc_html( $meta_value->post_title ); ?>
+                                          <?php echo esc_html( get_the_title(get_post($meta_value))); ?>
                                         </a>
                                         <?php
+                                      elseif ($post_type == 'genre'):
+                                        $genre_animes = new WP_Query(array(
+                                          'post_type' => 'anime',
+                                          'meta_query' => array(
+                                            array(
+                                              'key' => 'anime_genres',
+                                              'compare' => 'LIKE',
+                                              'value' => '"'.get_the_ID().'"',
+                                            )
+                                          )
+                                        ));
+                                        while ($genre_animes->have_posts()):
+                                          $genre_animes->the_post();
+                                          ?>
+                                          <a class="newsup-categories category-color-1" href="<?php echo esc_url(get_permalink( $post )) ?>" alt="">
+                                            <?php echo esc_html( get_the_title( $post )); ?>
+                                        </a>
+                                        <?php
+                                        endwhile;
                                       endif;
                                       ?>
                                   </div>
