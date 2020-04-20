@@ -64,7 +64,7 @@ $you_missed_enable = esc_attr(get_theme_mod('you_missed_enable','true'));
      <?php } else { ?>
     <footer> 
     <?php } ?>
-        <div class="overlay" style="background-color: <?php echo esc_html($newsup_footer_overlay_color);?>;">
+        <div class="overlay" style="background-color: <?php echo esc_attr($newsup_footer_overlay_color);?>;">
                 <!--Start mg-footer-widget-area-->
                  <?php if ( is_active_sidebar( 'footer_widget_area' ) ) { ?>
                 <div class="mg-footer-widget-area">

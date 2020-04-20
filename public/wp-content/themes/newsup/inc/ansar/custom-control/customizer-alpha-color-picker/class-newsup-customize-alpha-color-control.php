@@ -46,9 +46,11 @@ class Newsup_Customize_Alpha_Color_Control extends WP_Customize_Control {
 		);
 		wp_enqueue_style(
 			'newsup_alpha-color-picker',
-			get_template_directory_uri() . '/inc/ansar/custom-control/customizer-alpha-color-picker/js/alpha-color-picker.css',
+			get_template_directory_uri() . '/inc/ansar/custom-control/customizer-alpha-color-picker/css/alpha-color-picker.css',
 			array( 'wp-color-picker' ),999
 		);
+
+		wp_enqueue_style( 'wp-color-picker' );
 	}
 	/**
 	 * Render the control.

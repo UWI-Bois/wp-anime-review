@@ -99,7 +99,7 @@ if (!function_exists('newsup_render_posts')):
     switch ($type) {
         case 'popular':
             $args = array(
-                'post_type' => 'anime',
+                'post_type' => 'post',
                 'post_status' => 'publish',
                 'posts_per_page' => absint($number_of_posts),
                 'orderby' => 'comment_count',
@@ -109,7 +109,7 @@ if (!function_exists('newsup_render_posts')):
 
         case 'recent':
             $args = array(
-                'post_type' => 'anime',
+                'post_type' => 'post',
                 'post_status' => 'publish',
                 'posts_per_page' => absint($number_of_posts),
                 'orderby' => 'date',
@@ -119,7 +119,7 @@ if (!function_exists('newsup_render_posts')):
 
         case 'categorised':
             $args = array(
-                'post_type' => 'anime',
+                'post_type' => 'post',
                 'post_status' => 'publish',
                 'posts_per_page' => absint($number_of_posts),
                 'ignore_sticky_posts' => true
