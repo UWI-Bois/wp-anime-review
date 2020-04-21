@@ -243,4 +243,59 @@ if (!function_exists('newsup_edit_link')) :
 
     } 
 endif;
+
+function newsup_date_display_type() {
+    // Return if date display option is not enabled
+    $header_data_enable = esc_attr(get_theme_mod('header_data_enable','true'));
+    $header_time_enable = esc_attr(get_theme_mod('header_time_enable','true'));
+    $newsup_date_time_show_type = get_theme_mod('newsup_date_time_show_type','newsup_default');
+    if ( $newsup_date_time_show_type == 'newsup_default' ) { ?>
+        <li><?php if($header_data_enable == true) {
+            echo date_i18n('D. M jS, Y ', strtotime(current_time("Y-m-d"))); }
+            if($header_time_enable == true) { ?>
+            <span  id="time" class="time"></span>
+            <?php } ?>
+        </li>
+    <?php } elseif( $newsup_date_time_show_type == 'wordpress_date_setting')
+    { ?>
+        <li><?php if($header_data_enable == true) {
+            echo date_i18n( get_option( 'date_format' ) ); }
+            if($header_time_enable == true) { ?>
+            <span class="time"> <?php $format = get_option('') . ' ' . get_option('time_format');
+            print date_i18n($format, current_time('timestamp')); ?></span>
+            <?php } ?>
+        </li>
+
+
+   <?php }
+}
+
+if (!function_exists('newsup_page_edit_link')) :
+
+    function newsup_page_edit_link($view = 'default')
+    {
+        global $post;
+if(is_page()){
+
+if ( get_edit_post_link() ) :
+        
+                edit_post_link(
+                    sprintf(
+                        wp_kses(
+                            /* translators: %s: Name of current post. Only visible to screen readers */
+                            __( 'Edit <span class="screen-reader-text">%s</span>', 'newsup' ),
+                            array(
+                                'span' => array(
+                                    'class' => array(),
+                                ),
+                            )
+                        ),
+                        get_the_title()
+                    ),
+                    '<span class="edit-link">',
+                    '</span>'
+                );
+endif; } 
+
+} endif;
 ?>

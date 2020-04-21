@@ -318,4 +318,3 @@ if (!function_exists('newsup_front_page_banner_section')) :
     }
 endif;
 add_action('newsup_action_front_page_main_section_1', 'newsup_front_page_banner_section', 40);
-

@@ -53,6 +53,23 @@ $wp_customize->add_section( 'header_options' , array(
         )
     ));
 
+    // date in header display type
+    $wp_customize->add_setting( 'newsup_date_time_show_type', array(
+        'default'           => 'newsup_default',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'newsup_sanitize_select',
+    ) );
+
+    $wp_customize->add_control( 'newsup_date_time_show_type', array(
+        'type'     => 'radio',
+        'label'    => esc_html__( 'Date / Time in header display type:', 'newsup' ),
+        'choices'  => array(
+            'newsup_default'          => esc_html__( 'Theme Default Setting', 'newsup' ),
+            'wordpress_date_setting' => esc_html__( 'From WordPress Setting', 'newsup' ),
+        ),
+        'section'  => 'header_options',
+        'settings' => 'newsup_date_time_show_type',
+    ) );
 
     $wp_customize->add_setting('header_social_icon_enable',
     array(
@@ -659,7 +676,7 @@ $wp_customize->add_control(new Newsup_Toggle_Control( $wp_customize, 'newsup_ena
 
     //Bqckground Overlay 
    $wp_customize->add_setting(
-        'newsup_footer_overlay_color', array( 'sanitize_callback' => 'sanitize_hex_color',
+        'newsup_footer_overlay_color', array( 'sanitize_callback' => 'sanitize_text_field',
         
     ) );
     
