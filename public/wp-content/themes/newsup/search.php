@@ -7,33 +7,7 @@
 
 get_header(); ?>
 <!--==================== Newsup breadcrumb section ====================-->
-<?php
-$newsup_background_image = get_theme_support( 'custom-header', 'default-image' );
-
-if ( has_header_image() ) {
-  $newsup_background_image = get_header_image();
-}
-?>
-<div class="mg-breadcrumb-section" style='background: url("<?php echo esc_url( $newsup_background_image ); ?>" ) repeat scroll center 0 #143745;'>
-<?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  <div class="overlay">
-<?php } ?>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-                <div class="mg-breadcrumb-title">
-           <h1><?php the_title(); ?></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  <?php $newsup_remove_header_image_overlay = get_theme_mods('remove_header_image_overlay',true);
-if($newsup_remove_header_image_overlay == true){ ?>
-  </div>
-<?php } ?>
-</div>
-<div class="clearfix"></div>
+<?php get_template_part('index','banner'); ?>
 <!--==================== main content section ====================-->
 <div id="content">
     <!--container-->

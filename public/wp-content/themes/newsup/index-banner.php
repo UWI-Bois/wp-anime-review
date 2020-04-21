@@ -15,9 +15,12 @@ if($newsup_remove_header_image_overlay == true){ ?>
         <div class="col-md-12 col-sm-12">
 			    <div class="mg-breadcrumb-title">
             <?php
+          if(is_archive()) {
           the_archive_title( '<h1>', '</h1>' );
           the_archive_description( '<div class="archive-description">', '</div>' );
-          ?>
+          } else { ?>
+          <h1><?php the_title(); ?></h1>
+         <?php } ?>
           </div>
         </div>
       </div>

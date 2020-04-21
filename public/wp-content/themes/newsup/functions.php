@@ -46,9 +46,6 @@
 	/* ----------------------------------------------------------------------------------- */
 
 	require( $newsup_theme_path  . '/hooks/hooks-init.php');
-
-    require get_template_directory().'/inc/ansar/customize/newsup-footer.php';
-
 	
 	require_once( trailingslashit( get_template_directory() ) . 'inc/ansar/customize-pro/class-customize.php' );
 

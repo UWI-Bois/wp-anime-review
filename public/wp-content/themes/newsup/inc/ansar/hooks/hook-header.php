@@ -13,8 +13,6 @@ function newsup_header_section()
     <div class="container-fluid">
         <div class="row">
             <?php
-            $header_data_enable = esc_attr(get_theme_mod('header_data_enable','true'));
-            $header_time_enable = esc_attr(get_theme_mod('header_time_enable','true'));
             $header_social_icon_enable = esc_attr(get_theme_mod('header_social_icon_enable','true'));
             $newsup_header_fb_link = get_theme_mod('newsup_header_fb_link');
             $newsup_header_fb_target = esc_attr(get_theme_mod('newsup_header_fb_target','true'));
@@ -30,12 +28,7 @@ function newsup_header_section()
             $newsup_header_pintrest_target = esc_attr(get_theme_mod('newsup_header_pintrest_target','true'));  ?>
             <div class="col-md-6 col-xs-12 col-sm-6">
                 <ul class="info-left">
-                    <li><?php if($header_data_enable == true) {
-                        echo date_i18n('D. M jS, Y ', strtotime(current_time("Y-m-d"))); }
-                        if($header_time_enable == true) { ?>
-                        <span  id="time" class="time"></span>
-                      <?php } ?>
-                    </li>
+                    <?php newsup_date_display_type(); ?>
                 </ul>
             </div>
             <?php 
