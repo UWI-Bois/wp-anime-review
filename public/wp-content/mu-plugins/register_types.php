@@ -25,7 +25,7 @@ function anime_post_types () {
         'description' => "Collection of Japanese film, television and comic adaptations.",
         'menu_icon' => 'dashicons-images-alt',
         'capability_type' => 'anime', //set custom permissions to be used with custom roles (created with plugin by MemberPress)
-        'map_met_cap' => true,
+        'map_meta_cap' => true,
     )
   );
 
@@ -45,7 +45,7 @@ function anime_post_types () {
       'menu_icon' => 'dashicons-editor-kitchensink',
       'rewrite' => array('slug' => 'genres'),
       'capability_type' => 'genre', 
-      'map_met_cap' => true,
+      'map_meta_cap' => true,
     )
   );
 
@@ -65,7 +65,7 @@ function anime_post_types () {
         'menu_icon' => 'dashicons-format-quote',
         'rewrite' => array('slug' => 'reviews'),
         'capability_type' => 'anime_review',
-        'map_met_cap' => true
+        'map_meta_cap' => true
     )
   );
 }
